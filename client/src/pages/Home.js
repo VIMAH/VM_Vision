@@ -115,6 +115,7 @@ const Home = () => {
                             </Link>
                         </motion.div>
 
+                        {/* Wallet status indicator - commented out for future development
                         {isConnected && (
                             <motion.div
                                 className="wallet-status"
@@ -128,6 +129,7 @@ const Home = () => {
                                 </div>
                             </motion.div>
                         )}
+                        */}
                     </motion.div>
 
                     <motion.div

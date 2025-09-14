@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -12,102 +12,145 @@ import {
     FaCogs,
     FaArrowRight,
     FaCheck,
-    FaTimes
+    FaTimes,
+    FaProjectDiagram,
+    FaChalkboardTeacher,
+    FaIdCard,
+    FaUsersCog
 } from 'react-icons/fa';
 import './Services.css';
 
 const Services = () => {
     const [activeService, setActiveService] = useState(0);
 
+    // Handle URL hash changes to scroll to specific services
+    useEffect(() => {
+        const handleHashChange = () => {
+            const hash = window.location.hash.substring(1); // Remove the # symbol
+            if (hash) {
+                const serviceIndex = services.findIndex(service => service.id === hash);
+                if (serviceIndex !== -1) {
+                    setActiveService(serviceIndex);
+                    // Scroll to the service after a short delay to ensure the page is rendered
+                    setTimeout(() => {
+                        const element = document.getElementById(hash);
+                        if (element) {
+                            element.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                        }
+                    }, 100);
+                }
+            }
+        };
+
+        // Handle initial load
+        handleHashChange();
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', handleHashChange);
+
+        return () => {
+            window.removeEventListener('hashchange', handleHashChange);
+        };
+    }, []);
+
     const services = [
         {
-            icon: FaCode,
-            title: 'Smart Contract Development',
-            description: 'Custom smart contracts for any blockchain platform with security audits and gas optimization.',
+            icon: FaProjectDiagram,
+            title: 'Software Architectuur',
+            id: 'software-architectuur',
+            description: 'Ontwerp en realiseer schaalbare, veilige en toekomstbestendige software-architecturen.',
             features: [
-                'Ethereum & EVM-compatible chains',
-                'Security audits & testing',
-                'Gas optimization',
-                'Upgradeable contracts',
-                'Multi-signature wallets',
-                'Token standards (ERC-20, ERC-721, ERC-1155)'
+                'Schaalbare en modulaire architectuur',
+                'Cloud-native oplossingen',
+                'Integratie van bestaande systemen',
+                'Security by design',
+                'API & microservices architectuur',
+                'Documentatie & best practices'
             ],
-            price: 'Starting at $5,000',
+            price: 'Op maat',
             color: '#4f46e5'
         },
         {
-            icon: FaRocket,
-            title: 'DeFi Solutions',
-            description: 'Build decentralized finance applications including DEXs, lending protocols, and yield farming.',
+            icon: FaCode,
+            title: 'Software Ontwikkeling',
+            id: 'software-ontwikkeling',
+            description: 'End-to-end softwareontwikkeling met moderne frameworks en agile werkwijze.',
             features: [
-                'Decentralized Exchanges (DEX)',
-                'Lending & Borrowing Protocols',
-                'Yield Farming & Staking',
-                'Liquidity Pools',
-                'Automated Market Makers',
-                'Cross-chain Bridges'
+                'Full-stack ontwikkeling',
+                'Web & mobiele applicaties',
+                'Koppelingen & API-ontwikkeling',
+                'Test-driven development',
+                'CI/CD pipelines',
+                'Onderhoud & support'
             ],
-            price: 'Starting at $15,000',
+            price: 'Op maat',
             color: '#10b981'
         },
         {
-            icon: FaCoins,
-            title: 'NFT Marketplaces',
-            description: 'Complete NFT marketplace solutions with minting, trading, and royalty management.',
+            icon: FaChalkboardTeacher,
+            title: 'Software Consultant',
+            id: 'software-consultant',
+            description: 'Advies en begeleiding bij het kiezen, ontwerpen en implementeren van softwareoplossingen.',
             features: [
-                'NFT Minting & Trading',
-                'Royalty Management',
-                'Auction Systems',
-                'Metadata Management',
-                'IPFS Integration',
-                'Multi-chain Support'
+                'Strategisch advies',
+                'Proof-of-Concepts',
+                'Technologie selectie',
+                'Workshops & kennisoverdracht',
+                'Roadmap ontwikkeling',
+                'Begeleiding implementatie'
             ],
-            price: 'Starting at $10,000',
+            price: 'Vanaf €2.000',
             color: '#f59e0b'
         },
         {
-            icon: FaMobile,
-            title: 'Web3 Frontend Development',
-            description: 'Modern, responsive frontend applications with seamless Web3 wallet integration.',
+            icon: FaChartLine,
+            title: 'Software/IT Strategie',
+            id: 'software-it-strategie',
+            description: 'Helpt organisaties bij het ontwikkelen van een toekomstgerichte IT- en softwarestrategie.',
             features: [
-                'React/Next.js Development',
-                'Wallet Integration',
-                'Responsive Design',
-                'Real-time Updates',
-                'User Authentication',
-                'API Integration'
+                'Digitale transformatie',
+                'Enterprise IT strategie',
+                'Cloud strategie',
+                'Architectuurkeuzes',
+                'Innovatie & technologie trends',
+                'Business alignment'
             ],
-            price: 'Starting at $8,000',
+            price: 'Op maat',
             color: '#ef4444'
         },
         {
-            icon: FaDatabase,
-            title: 'Blockchain Consulting',
-            description: 'Strategic guidance for blockchain implementation and technology selection.',
+            icon: FaIdCard,
+            title: 'Digitale Identiteiten',
+            id: 'digitale-identiteiten',
+            description: 'Expertise in identiteitsbeheer en implementatie van moderne IAM-oplossingen.',
             features: [
-                'Technology Assessment',
-                'Architecture Design',
-                'Security Best Practices',
-                'Tokenomics Design',
-                'Regulatory Compliance',
-                'Project Roadmapping'
+                'IAM systemen',
+                'Single Sign-On (SSO)',
+                'Self-Sovereign Identity (SSI)',
+                'EUDI Wallet & NL Wallet integratie',
+                'Authenticatie & autorisatie',
+                'Compliance & security'
             ],
-            price: 'Starting at $2,000',
+            price: 'Op maat',
             color: '#8b5cf6'
         },
         {
-            icon: FaCogs,
-            title: 'Custom Web3 Solutions',
-            description: 'Tailored blockchain solutions for specific business requirements and use cases.',
+            icon: FaUsersCog,
+            title: 'PO / Scrum Master',
+            id: 'po-scrum-master',
+            description: 'Begeleiding van agile teams om maximale waarde te leveren met Scrum en DevOps.',
             features: [
-                'Custom Blockchain Development',
-                'Private Network Setup',
-                'Enterprise Integration',
-                'Scalability Solutions',
-                'Interoperability',
-                'Maintenance & Support'
+                'Agile coaching',
+                'Scrum implementatie',
+                'Product backlog management',
+                'Stakeholder management',
+                'Team coaching',
+                'Procesverbetering'
             ],
-            price: 'Custom Quote',
+            price: 'Op maat',
             color: '#06b6d4'
         }
     ];
@@ -211,6 +254,7 @@ const Services = () => {
                         {services.map((service, index) => (
                             <motion.div
                                 key={index}
+                                id={service.id}
                                 className={`card service-card ${activeService === index ? 'active' : ''}`}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}

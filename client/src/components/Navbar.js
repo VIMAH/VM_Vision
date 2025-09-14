@@ -59,6 +59,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="nav-actions">
+                    {/* Wallet connection functionality - commented out for future development
                     {isConnected ? (
                         <div className="wallet-info">
                             <span className="wallet-address">{formatAddress(account)}</span>
@@ -83,6 +84,7 @@ const Navbar = () => {
                             )}
                         </button>
                     )}
+                    */}
 
                     <div
                         className={`hamburger ${isMenuOpen ? 'active' : ''}`}

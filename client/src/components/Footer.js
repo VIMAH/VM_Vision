@@ -22,11 +22,12 @@ const Footer = () => {
     ];
 
     const services = [
-        'Smart Contract Development',
-        'DeFi Solutions',
-        'NFT Marketplaces',
-        'Web3 Integration',
-        'Blockchain Consulting',
+        { name: 'Software Architectuur', id: 'software-architectuur' },
+        { name: 'Software Ontwikkeling', id: 'software-ontwikkeling' },
+        { name: 'Software Consultant', id: 'software-consultant' },
+        { name: 'Software/IT Strategie', id: 'software-it-strategie' },
+        { name: 'Digitale Identiteiten', id: 'digitale-identiteiten' },
+        { name: 'PO / Scrum Master', id: 'po-scrum-master' },
     ];
 
     return (
@@ -92,7 +93,7 @@ const Footer = () => {
                         <ul className="footer-links">
                             {services.map((service, index) => (
                                 <li key={index}>
-                                    <span>{service}</span>
+                                    <Link to={`/services#${service.id}`}>{service.name}</Link>
                                 </li>
                             ))}
                         </ul>
