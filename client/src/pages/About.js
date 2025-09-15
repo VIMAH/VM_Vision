@@ -307,7 +307,7 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                         viewport={{ once: true }}
                     >
-                        <h2>Our Mission</h2>
+                        <h2>Onze Missie</h2>
                         <p>
                             Onze missie is het ontwerpen, ontwikkelen en adviseren van software die organisaties vooruit helpt.
                             Onze visie is om met innovatieve en gebruiksvriendelijke oplossingen technologie toegankelijk en toekomstgericht te maken.

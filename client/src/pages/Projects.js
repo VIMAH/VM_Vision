@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
     FaExternalLinkAlt,
@@ -7,29 +7,175 @@ import {
     FaCoins,
     FaRocket,
     FaShieldAlt,
-    FaFilter,
-    FaTimes
+    FaCode,
+    FaPython,
+    FaJs,
+    FaCss3Alt,
 } from 'react-icons/fa';
 import './Projects.css';
 
 const Projects = () => {
-    const [activeFilter, setActiveFilter] = useState('all');
+    const [projects, setProjects] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-    const filters = [
-        { id: 'all', label: 'All Projects' },
-        { id: 'defi', label: 'DeFi' },
-        { id: 'nft', label: 'NFT' },
-        { id: 'dao', label: 'DAO' },
-        { id: 'enterprise', label: 'Enterprise' }
-    ];
+    // Function to get icon based on language
+    const getLanguageIcon = (language) => {
+        switch (language?.toLowerCase()) {
+            case 'javascript':
+                return FaJs;
+            case 'python':
+                return FaPython;
+            case 'css':
+                return FaCss3Alt;
+            case 'solidity':
+                return FaEthereum;
+            case 'c#':
+                return FaCode;
+            default:
+                return FaCode;
+        }
+    };
 
-    const projects = [
+    // Function to get color based on language
+    const getLanguageColor = (language) => {
+        switch (language?.toLowerCase()) {
+            case 'javascript':
+                return '#f7df1e';
+            case 'python':
+                return '#3776ab';
+            case 'css':
+                return '#1572b6';
+            case 'solidity':
+                return '#627eea';
+            case 'c#':
+                return '#239120';
+            default:
+                return '#4f46e5';
+        }
+    };
+
+    // Function to get tech stack based on repository
+    const getTechStack = (repo) => {
+        const techStack = [];
+
+        if (repo.language) {
+            techStack.push(repo.language);
+        }
+
+        // Add additional technologies based on repository name and description
+        if (repo.name.toLowerCase().includes('react') || repo.description?.toLowerCase().includes('react')) {
+            techStack.push('React');
+        }
+        if (repo.name.toLowerCase().includes('vite') || repo.description?.toLowerCase().includes('vite')) {
+            techStack.push('Vite');
+        }
+        if (repo.name.toLowerCase().includes('chainlink') || repo.description?.toLowerCase().includes('chainlink')) {
+            techStack.push('Chainlink');
+        }
+        if (repo.name.toLowerCase().includes('metamask') || repo.description?.toLowerCase().includes('metamask')) {
+            techStack.push('MetaMask');
+        }
+        if (repo.name.toLowerCase().includes('dapp') || repo.description?.toLowerCase().includes('dapp')) {
+            techStack.push('Web3.js');
+        }
+        if (repo.name.toLowerCase().includes('wallet') || repo.description?.toLowerCase().includes('wallet')) {
+            techStack.push('Blockchain');
+        }
+        if (repo.name.toLowerCase().includes('visualizer') || repo.description?.toLowerCase().includes('visualizer')) {
+            techStack.push('Data Analysis');
+        }
+
+        return techStack.length > 0 ? techStack : ['Web Development'];
+    };
+
+    // Function to fetch README content
+    const fetchReadme = async (repo) => {
+        try {
+            const readmeResponse = await fetch(`https://api.github.com/repos/VIMAH/${repo.name}/readme`);
+            if (readmeResponse.ok) {
+                const readmeData = await readmeResponse.json();
+                const content = atob(readmeData.content);
+                // Extract first paragraph or description from README
+                const lines = content.split('\n');
+                let description = '';
+                for (let line of lines) {
+                    line = line.trim();
+                    if (line && !line.startsWith('#') && !line.startsWith('!') && !line.startsWith('[') && line.length > 20) {
+                        description = line.replace(/[#*`]/g, '').trim();
+                        break;
+                    }
+                }
+                return description || repo.description || 'A software development project showcasing modern technologies and best practices.';
+            }
+        } catch (error) {
+            console.log(`Could not fetch README for ${repo.name}`);
+        }
+        return repo.description || 'A software development project showcasing modern technologies and best practices.';
+    };
+
+    // Function to fetch repository languages
+    const fetchLanguages = async (repo) => {
+        try {
+            const languagesResponse = await fetch(`https://api.github.com/repos/VIMAH/${repo.name}/languages`);
+            if (languagesResponse.ok) {
+                const languages = await languagesResponse.json();
+                return Object.keys(languages);
+            }
+        } catch (error) {
+            console.log(`Could not fetch languages for ${repo.name}`);
+        }
+        return repo.language ? [repo.language] : ['Unknown'];
+    };
+
+    // Fetch GitHub repositories
+    useEffect(() => {
+        const fetchRepositories = async () => {
+            try {
+                const response = await fetch('https://api.github.com/users/VIMAH/repos?sort=updated&per_page=10');
+                const repos = await response.json();
+
+                const formattedProjects = await Promise.all(repos.map(async (repo) => {
+                    const [description, languages] = await Promise.all([
+                        fetchReadme(repo),
+                        fetchLanguages(repo)
+                    ]);
+
+                    const primaryLanguage = languages[0] || 'Unknown';
+
+                    return {
+                        id: repo.id,
+                        title: repo.name.replace(/-/g, ' ').replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                        category: 'GitHub Repository',
+                        description: description,
+                        technologies: languages,
+                        links: {
+                            live: repo.homepage || repo.html_url,
+                            github: repo.html_url
+                        },
+                        status: repo.archived ? 'Archived' : 'Active',
+                        icon: FaGithub,
+                        color: '#333333',
+                        language: primaryLanguage
+                    };
+                }));
+
+                setProjects(formattedProjects);
+                setLoading(false);
+            } catch (error) {
+                console.error('Error fetching repositories:', error);
+                setLoading(false);
+            }
+        };
+
+        fetchRepositories();
+    }, []);
+
+    const staticProjects = [
         {
             id: 1,
-            title: 'DeFiSwap Protocol',
-            category: 'defi',
-            description: 'A decentralized exchange with automated market maker functionality, supporting multiple token pairs and liquidity mining.',
-            image: '/api/placeholder/600/400',
+            title: 'Data visualizer',
+            category: 'Strategie & Advies',
+            description: 'A data analysis tool that processes WakaTime statistics for visualization, trend analysis, and reporting.',
             technologies: ['Solidity', 'React', 'Web3.js', 'IPFS'],
             features: [
                 'Automated Market Maker',
@@ -38,8 +184,7 @@ const Projects = () => {
                 'Governance Token'
             ],
             links: {
-                live: '#',
-                github: '#'
+                github: 'https://github.com/VIMAH/Data-Visualizer'
             },
             status: 'Live',
             tvl: '$2.5M',
@@ -158,15 +303,12 @@ const Projects = () => {
         }
     ];
 
-    const filteredProjects = activeFilter === 'all'
-        ? projects
-        : projects.filter(project => project.category === activeFilter);
 
     const stats = [
-        { label: 'Total Projects', value: '50+', icon: FaRocket },
-        { label: 'Total TVL', value: '$10M+', icon: FaEthereum },
-        { label: 'Active Users', value: '25K+', icon: FaCoins },
-        { label: 'Blockchain Networks', value: '8+', icon: FaShieldAlt }
+        { label: 'Projecten afgerond', value: '5+', icon: FaRocket },
+        { label: 'Tevreden klanten', value: '8+', icon: FaEthereum },
+        { label: 'Bedrijven geadviseerd en ondersteund', value: '5+', icon: FaCoins },
+        { label: 'Ideeën voor digitale oplossingen en innovaties', value: '∞', icon: FaShieldAlt }
     ];
 
     return (
@@ -186,7 +328,7 @@ const Projects = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            Our <span className="text-gradient">Projects</span>
+                            Onze <span className="text-gradient">Projecten</span>
                         </motion.h1>
 
                         <motion.p
@@ -195,7 +337,7 @@ const Projects = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
-                            Showcasing innovative Web3 solutions that drive the future of decentralized technology
+                            Innovaties die organisaties net dat stapje sneller maken dan de toekomst zelf.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -226,115 +368,86 @@ const Projects = () => {
                 </div>
             </section>
 
-            {/* Filter Section */}
-            <section className="projects-filter section">
-                <div className="container">
-                    <motion.div
-                        className="filter-container"
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <div className="filter-buttons">
-                            {filters.map((filter) => (
-                                <button
-                                    key={filter.id}
-                                    className={`filter-btn ${activeFilter === filter.id ? 'active' : ''}`}
-                                    onClick={() => setActiveFilter(filter.id)}
-                                >
-                                    {filter.label}
-                                </button>
-                            ))}
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
 
             {/* Projects Grid */}
             <section className="projects-grid section">
                 <div className="container">
-                    <motion.div
-                        className="grid grid-2"
-                        layout
-                    >
-                        {filteredProjects.map((project, index) => (
-                            <motion.div
-                                key={project.id}
-                                className="project-card"
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: index * 0.1 }}
-                                layout
-                                whileHover={{ y: -10 }}
-                            >
-                                <div className="project-image">
-                                    <div className="project-placeholder">
-                                        <project.icon style={{ color: project.color }} />
-                                    </div>
-                                    <div className="project-status">
-                                        <span className={`status-badge ${project.status.toLowerCase()}`}>
-                                            {project.status}
-                                        </span>
-                                    </div>
-                                </div>
-
-                                <div className="project-content">
-                                    <div className="project-header">
-                                        <h3>{project.title}</h3>
-                                        <div className="project-metric">
-                                            {project.tvl && <span>TVL: {project.tvl}</span>}
-                                            {project.volume && <span>Volume: {project.volume}</span>}
-                                            {project.members && <span>Members: {project.members}</span>}
-                                            {project.clients && <span>Clients: {project.clients}</span>}
-                                            {project.apy && <span>APY: {project.apy}</span>}
-                                            {project.holders && <span>Holders: {project.holders}</span>}
+                    {loading ? (
+                        <div className="loading-container">
+                            <div className="loading-spinner"></div>
+                            <p>Loading your GitHub repositories...</p>
+                        </div>
+                    ) : (
+                        <motion.div
+                            className="grid grid-2"
+                            layout
+                        >
+                            {projects.map((project, index) => (
+                                <motion.div
+                                    key={project.id}
+                                    className="project-card"
+                                    initial={{ opacity: 0, y: 30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                                    layout
+                                    whileHover={{ y: -10 }}
+                                >
+                                    <div className="project-image">
+                                        <div className="project-placeholder">
+                                            <project.icon style={{ color: project.color }} />
                                         </div>
                                     </div>
 
-                                    <p className="project-description">{project.description}</p>
+                                    <div className="project-content">
+                                        <div className="project-header">
+                                            <h3>{project.title}</h3>
+                                            <div className="project-metric">
+                                                {project.tvl && <span>TVL: {project.tvl}</span>}
+                                                {project.volume && <span>Volume: {project.volume}</span>}
+                                                {project.members && <span>Members: {project.members}</span>}
+                                                {project.clients && <span>Clients: {project.clients}</span>}
+                                                {project.apy && <span>APY: {project.apy}</span>}
+                                                {project.holders && <span>Holders: {project.holders}</span>}
+                                            </div>
+                                        </div>
 
-                                    <div className="project-features">
-                                        <h4>Key Features:</h4>
-                                        <ul>
-                                            {project.features.map((feature, featureIndex) => (
-                                                <li key={featureIndex}>{feature}</li>
+                                        <p className="project-description">{project.description}</p>
+
+                                        <div className="project-technologies">
+                                            {project.technologies.map((tech, techIndex) => (
+                                                <span key={techIndex} className="tech-tag">
+                                                    {tech}
+                                                </span>
                                             ))}
-                                        </ul>
-                                    </div>
+                                        </div>
 
-                                    <div className="project-technologies">
-                                        {project.technologies.map((tech, techIndex) => (
-                                            <span key={techIndex} className="tech-tag">
-                                                {tech}
-                                            </span>
-                                        ))}
+                                        <div className="project-links">
+                                            {project.links.live && project.links.live !== project.links.github && (
+                                                <a
+                                                    href={project.links.live}
+                                                    className="project-link"
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                >
+                                                    <FaExternalLinkAlt />
+                                                    Live Demo
+                                                </a>
+                                            )}
+                                            <a
+                                                href={project.links.github}
+                                                className="project-link"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                <FaGithub />
+                                                Source Code
+                                            </a>
+                                        </div>
                                     </div>
-
-                                    <div className="project-links">
-                                        <a
-                                            href={project.links.live}
-                                            className="project-link"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <FaExternalLinkAlt />
-                                            Live Demo
-                                        </a>
-                                        <a
-                                            href={project.links.github}
-                                            className="project-link"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                        >
-                                            <FaGithub />
-                                            Source Code
-                                        </a>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    )}
                 </div>
             </section>
 
@@ -348,16 +461,16 @@ const Projects = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        <h2>Have a Project in Mind?</h2>
+                        <h2>Een project in gedachten?</h2>
                         <p>
-                            Let's collaborate to bring your Web3 vision to life with cutting-edge blockchain technology.
+                            Laten we samenwerken om jouw ideeën te vertalen naar moderne softwareoplossingen en digitale strategieën.
                         </p>
                         <div className="cta-actions">
                             <a href="/contact" className="btn-primary">
-                                Start Your Project
+                                Neem contact op
                             </a>
                             <a href="/services" className="btn-secondary">
-                                View Our Services
+                                Bekijk onze diensten
                             </a>
                         </div>
                     </motion.div>

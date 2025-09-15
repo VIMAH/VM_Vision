@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useWeb3 } from '../context/Web3Context';
 import {
@@ -15,21 +15,49 @@ import {
     FaTimes
 } from 'react-icons/fa';
 import './Contact.css';
-
 const Contact = () => {
+
     const { isConnected, account } = useWeb3();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         company: '',
-        projectType: '',
-        budget: '',
-        timeline: '',
         message: '',
-        walletAddress: account || ''
     });
+
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null);
+
+    const calendlyRef = useRef(null);
+
+    useEffect(() => {
+        // Prevent duplicate initialization
+        if (calendlyRef.current && calendlyRef.current.dataset.initialized === 'true') {
+            return;
+        }
+        const init = () => {
+            if (window.Calendly && calendlyRef.current) {
+                window.Calendly.initInlineWidget({
+                    url: 'https://calendly.com/vinaymahadew-01?hide_gdpr_banner=1&text_color=000000&primary_color=10b981',
+                    parentElement: calendlyRef.current,
+                });
+                calendlyRef.current.dataset.initialized = 'true';
+                return true;
+            }
+            return false;
+        };
+
+        if (!init()) {
+            const onLoad = () => init();
+            const script = document.querySelector('script[src*="assets.calendly.com/assets/external/widget.js"]');
+            if (script) script.addEventListener('load', onLoad);
+            const id = setInterval(() => { if (init()) clearInterval(id); }, 100);
+            return () => {
+                clearInterval(id);
+                if (script) script.removeEventListener('load', onLoad);
+            };
+        }
+    }, []);
 
     const projectTypes = [
         'Smart Contract Development',
@@ -67,23 +95,21 @@ const Contact = () => {
         {
             icon: FaPhone,
             title: 'Phone',
-            value: '+1 (555) 123-4567',
-            link: 'tel:+15551234567'
+            value: '+31 6 83 211 888',
+            link: 'tel:+31683211888'
         },
         {
             icon: FaMapMarkerAlt,
-            title: 'Location',
-            value: 'Web3 District, Blockchain City',
-            link: '#'
+            title: 'Locatie',
+            value: 'Den Haag',
+            link: 'https://maps.app.goo.gl/yV5vLT7foLwBgWDj8'
         }
     ];
 
     const socialLinks = [
-        { icon: FaTwitter, url: '#', label: 'Twitter' },
-        { icon: FaLinkedin, url: '#', label: 'LinkedIn' },
-        { icon: FaGithub, url: '#', label: 'GitHub' },
-        { icon: FaDiscord, url: '#', label: 'Discord' },
-        { icon: FaTelegram, url: '#', label: 'Telegram' }
+        { icon: FaLinkedin, url: 'https://www.linkedin.com/in/vinay-mh/', label: 'LinkedIn' },
+        { icon: FaGithub, url: 'https://github.com/VIMAH', label: 'GitHub' },
+        { icon: FaDiscord, url: 'https://discord.com/users/882989507358654494', label: 'Discord' },
     ];
 
     const handleInputChange = (e) => {
@@ -110,11 +136,7 @@ const Contact = () => {
                 name: '',
                 email: '',
                 company: '',
-                projectType: '',
-                budget: '',
-                timeline: '',
                 message: '',
-                walletAddress: account || ''
             });
         } catch (error) {
             setSubmitStatus('error');
@@ -140,7 +162,7 @@ const Contact = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            Get In <span className="text-gradient">Touch</span>
+                            Kom in <span className="text-gradient">contact</span>
                         </motion.h1>
 
                         <motion.p
@@ -149,7 +171,7 @@ const Contact = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
-                            Ready to start your Web3 project? Let's discuss how we can bring your vision to life.
+                            Klaar om jouw digitale project te starten? Laten we bespreken hoe we jouw visie tot leven kunnen brengen.
                         </motion.p>
                     </motion.div>
                 </div>
@@ -168,8 +190,8 @@ const Contact = () => {
                             viewport={{ once: true }}
                         >
                             <div className="form-header">
-                                <h2>Start Your Project</h2>
-                                <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+                                <h2>Laten we samen aan de slag gaan</h2>
+                                <p>Vul het formulier in en we nemen snel contact met je op om jouw wensen te bespreken.</p>
                             </div>
 
                             {submitStatus === 'success' && (
@@ -180,7 +202,7 @@ const Contact = () => {
                                     transition={{ duration: 0.5 }}
                                 >
                                     <FaCheck />
-                                    <span>Thank you! Your message has been sent successfully.</span>
+                                    <span>Bedankt! Je bericht is succesvol verzonden.</span>
                                 </motion.div>
                             )}
 
@@ -192,14 +214,14 @@ const Contact = () => {
                                     transition={{ duration: 0.5 }}
                                 >
                                     <FaTimes />
-                                    <span>Sorry, there was an error sending your message. Please try again.</span>
+                                    <span>Sorry, er is een fout opgetreden bij het verzenden van je bericht. Probeer het opnieuw.</span>
                                 </motion.div>
                             )}
 
                             <form onSubmit={handleSubmit} className="contact-form">
                                 <div className="form-row">
                                     <div className="form-group">
-                                        <label htmlFor="name">Full Name *</label>
+                                        <label htmlFor="name">Volledige naam *</label>
                                         <input
                                             type="text"
                                             id="name"
@@ -207,36 +229,24 @@ const Contact = () => {
                                             value={formData.name}
                                             onChange={handleInputChange}
                                             required
-                                            placeholder="Your full name"
-                                        />
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="email">Email Address *</label>
-                                        <input
-                                            type="email"
-                                            id="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleInputChange}
-                                            required
-                                            placeholder="your@email.com"
+                                            placeholder="Voornaam + Achternaam"
                                         />
                                     </div>
                                 </div>
 
                                 <div className="form-row">
                                     <div className="form-group">
-                                        <label htmlFor="company">Company</label>
+                                        <label htmlFor="company">Bedrijf</label>
                                         <input
                                             type="text"
                                             id="company"
                                             name="company"
                                             value={formData.company}
                                             onChange={handleInputChange}
-                                            placeholder="Your company name"
+                                            placeholder="Bedrijfsnaam"
                                         />
                                     </div>
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label htmlFor="projectType">Project Type *</label>
                                         <select
                                             id="projectType"
@@ -250,11 +260,11 @@ const Contact = () => {
                                                 <option key={index} value={type}>{type}</option>
                                             ))}
                                         </select>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 <div className="form-row">
-                                    <div className="form-group">
+                                    {/* <div className="form-group">
                                         <label htmlFor="budget">Budget Range</label>
                                         <select
                                             id="budget"
@@ -267,8 +277,20 @@ const Contact = () => {
                                                 <option key={index} value={range}>{range}</option>
                                             ))}
                                         </select>
-                                    </div>
+                                    </div> */}
                                     <div className="form-group">
+                                        <label htmlFor="email">Email Addres *</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleInputChange}
+                                            required
+                                            placeholder="Jouw@gmail.com"
+                                        />
+                                    </div>
+                                    {/* <div className="form-group">
                                         <label htmlFor="timeline">Timeline</label>
                                         <select
                                             id="timeline"
@@ -281,7 +303,7 @@ const Contact = () => {
                                                 <option key={index} value={option}>{option}</option>
                                             ))}
                                         </select>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 {isConnected && (
@@ -301,7 +323,7 @@ const Contact = () => {
                                 )}
 
                                 <div className="form-group">
-                                    <label htmlFor="message">Project Description *</label>
+                                    <label htmlFor="message">jouw bericht *</label>
                                     <textarea
                                         id="message"
                                         name="message"
@@ -309,7 +331,7 @@ const Contact = () => {
                                         onChange={handleInputChange}
                                         required
                                         rows="6"
-                                        placeholder="Tell us about your project, requirements, and goals..."
+                                        placeholder="Stel je vraag, vertel ons over jouw project of wat je nodig heb...."
                                     />
                                 </div>
 
@@ -325,8 +347,10 @@ const Contact = () => {
                                         </>
                                     ) : (
                                         <>
-                                            Send Message
-                                            <FaPaperPlane />
+                                            <span>Verstuur Bericht</span>
+                                            <span style={{ marginLeft: 8, display: 'inline-flex' }}>
+                                                <FaPaperPlane />
+                                            </span>
                                         </>
                                     )}
                                 </button>
@@ -342,8 +366,9 @@ const Contact = () => {
                             viewport={{ once: true }}
                         >
                             <div className="contact-info-header">
-                                <h2>Contact Information</h2>
-                                <p>Get in touch with us through any of these channels.</p>
+                                <h2>Contact Informatie</h2>
+                                <p>Bereik ons eenvoudig via onderstaande
+                                    kanalen</p>
                             </div>
 
                             <div className="contact-info-list">
@@ -385,14 +410,84 @@ const Contact = () => {
                             </div>
 
                             <div className="response-time">
-                                <h3>Response Time</h3>
-                                <p>We typically respond to all inquiries within 24 hours during business days.</p>
+                                <h3>Reactietijd</h3>
+                                <p>Wij reageren doorgaans op alle vragen binnen 24 uur op werkdagen.</p>
                             </div>
                         </motion.div>
                     </div>
                 </div>
             </section>
-        </div>
+
+            {/* Contact Form & Info 1*/}
+            <section className="contact-main section meeting-section">
+                <div className="container">
+                    <div className="contact-grid meeting-grid">
+                        {/* Contact Form */}
+                        <motion.div
+                            className="contact-form-container meeting-card"
+                            initial={{ opacity: 0, x: -50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8 }}
+                            viewport={{ once: true }}
+                        >
+                            <div className="form-header">
+                                <h2>Plan een meeting</h2>
+                                <p>Plan een call om kennis te maken en samen jouw wensen en mogelijkheden te bespreken.</p>
+                            </div>
+
+                            {submitStatus === 'success' && (
+                                <motion.div
+                                    className="success-message"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <FaCheck />
+                                    <span>Bedankt! Het is gelukt, u zult een bevestigingsmail ontvangen met meeting link</span>
+                                </motion.div>
+                            )}
+
+                            {submitStatus === 'error' && (
+                                <motion.div
+                                    className="error-message"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    <FaTimes />
+                                    <span>Sorry, er is een fout opgetreden. Refresh the pagina en plan u meeting opnieuw in</span>
+                                </motion.div>
+                            )}
+
+                            <form onSubmit={handleSubmit} className="contact-form meeting-form">
+                                {/* Calendly inline widget */}
+                                <div
+                                    ref={calendlyRef}
+                                    className="meeting-widget"
+                                    style={{ width: '100%', minWidth: '320px', height: '760px' }}
+                                />
+
+                                {isConnected && (
+                                    <div className="form-group">
+                                        <label htmlFor="walletAddress">Wallet Address</label>
+                                        <input
+                                            type="text"
+                                            id="walletAddress"
+                                            name="walletAddress"
+                                            value={formData.walletAddress}
+                                            onChange={handleInputChange}
+                                            placeholder="Your wallet address"
+                                            readOnly
+                                        />
+                                        <small>Connected wallet address (auto-filled)</small>
+                                    </div>
+                                )}
+                            </form>
+                        </motion.div>
+                    </div>
+                </div>
+            </section >
+        </div >
     );
 };
 

@@ -46,11 +46,80 @@
     background: rgba(255, 255, 255, 0.02);
 }
 
+/* Tighter spacing between the two contact sections */
+.contact .contact-main.section {
+    padding: 40px 0;
+    /* override global .section 80px */
+}
+
+.contact .contact-main.section:first-of-type {
+    padding-bottom: 16px;
+    /* smaller gap below first section */
+}
+
+.contact .contact-main.section+.contact-main.section {
+    padding-top: 8px;
+    /* minimal gap above meeting section */
+}
+
 .contact-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 60px;
-    align-items: start;
+    align-items: stretch;
+}
+
+/* Make meeting section align with contact form spacing */
+.meeting-section {
+    padding-top: 0px;
+}
+
+.meeting-grid {
+    grid-template-columns: 1fr;
+    max-width: none;
+}
+
+/* Meeting card styling to match contact form, but wider */
+.meeting-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: none;
+}
+
+.meeting-form {
+    gap: 24px;
+}
+
+.meeting-widget {
+    width: 100% !important;
+    min-height: 760px;
+    border-radius: 16px;
+    overflow: hidden;
+    /* background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08); */
+}
+
+/* Tighten spacing on small screens too */
+@media (max-width: 768px) {
+    .meeting-section {
+        padding-top: 10px;
+    }
+
+    .meeting-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .meeting-card {
+        padding: 30px 20px;
+    }
+
+    .meeting-widget {
+        min-height: 700px;
+    }
 }
 
 /* Contact Form */
@@ -106,7 +175,8 @@
 
 .form-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    /* make all fields full-width like the message box */
     gap: 20px;
 }
 
@@ -132,6 +202,7 @@
     color: #ffffff;
     font-size: 1rem;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
 .form-group input:focus,
