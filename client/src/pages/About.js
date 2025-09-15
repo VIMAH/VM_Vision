@@ -1,14 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { FaGraduationCap } from 'react-icons/fa';
+import vinayFoto from './Vinay PF foto.jpeg';
 import {
     FaCode,
     FaRocket,
     FaShieldAlt,
     FaUsers,
-    FaAward,
     FaLightbulb,
-    FaGlobe,
-    FaHandshake
+    FaHandshake,
 } from 'react-icons/fa';
 import './About.css';
 
@@ -16,28 +17,40 @@ const About = () => {
     const values = [
         {
             icon: FaCode,
-            title: 'Innovation',
-            description: 'We push the boundaries of what\'s possible in Web3 technology, constantly exploring new solutions and approaches.',
+            title: 'Visie',
+            description: 'Wij kijken vooruit en vertalen complexe uitdagingen naar heldere, toekomstgerichte softwareoplossingen.',
             color: '#4f46e5'
         },
         {
             icon: FaShieldAlt,
-            title: 'Security',
-            description: 'Security is at the core of everything we build. We implement best practices and conduct thorough audits.',
+            title: 'Missie',
+            description: 'Wij helpen organisaties hun digitale ambities te realiseren met betrouwbare strategie, architectuur en ontwikkeling.',
             color: '#10b981'
         },
         {
             icon: FaUsers,
-            title: 'Collaboration',
-            description: 'We believe in the power of teamwork and work closely with our clients to achieve their vision.',
+            title: 'Innovatie',
+            description: 'Wij benutten de nieuwste technologieën en zetten ze om in praktische, waardevolle oplossingen voor onze klanten.',
             color: '#f59e0b'
         },
         {
             icon: FaRocket,
-            title: 'Excellence',
-            description: 'We strive for excellence in every project, delivering high-quality solutions that exceed expectations.',
+            title: 'Samenwerking',
+            description: 'Wij geloven in co-creatie en bouwen duurzame relaties door open communicatie en gedeelde verantwoordelijkheid.',
             color: '#ef4444'
-        }
+        },
+        {
+            icon: FaUsers,
+            title: 'Betrouwbaarheid',
+            description: 'Wij staan voor consistentie, transparantie en kwaliteit, zodat klanten altijd op ons kunnen rekenen.',
+            color: '#f59e0b'
+        },
+        {
+            icon: FaUsers,
+            title: 'Leiderschap',
+            description: 'Wij nemen initiatief, tonen verantwoordelijkheid en geven richting in de snel veranderende digitale wereld.',
+            color: '#f59e0b'
+        },
     ];
     const team = [
         {
@@ -60,41 +73,39 @@ const About = () => {
       In 2025 studeerde ik af aan de Haagse Hogeschool (BSc Computer Science), met een specialisatie in Software Engineering en Web3/blockchain-technologie. Tijdens mijn studie en stages deed ik ervaring op bij onder andere de Kamer van Koophandel en Rijkswaterstaat, waar ik werkte aan projecten rond digitale identiteit en data-analyse.  
       
       Ik ben co-founder van BusinessWallet.eu en oprichter van VM Vision. Met VM Vision richt ik me op het ontwerpen, ontwikkelen en adviseren van softwareoplossingen die innovatief, gebruiksvriendelijk en toekomstbestendig zijn. Mijn missie is om technologie toegankelijk te maken en organisaties vooruit te helpen.`,
-            image: '/api/placeholder/300/300'
+            image: vinayFoto
         }
     ];
 
 
     const milestones = [
         {
-            year: '2025',
-            title: 'Bedrijf opgericht',
-            description: 'VM Vision is opgericht met de visie om de softwareontwikkeling te revolutioneren.',
+            year: '2021 - 2025',
+            title: 'Ervaring en kennis',
+            description: 'Door studie, onderzoek en interne projecten is een sterke basis opgebouwd in software architectuur, strategie en ontwikkeling.',
+            icon: FaGraduationCap
+        },
+        {
+            year: 'Juli 2025',
+            title: 'Het idee voor VM Vision',
+            description: 'Het concept voor VM Vision ontstaat: organisaties ondersteunen met moderne softwareoplossingen en digitale strategie.',
+            icon: FaLightbulb
+        },
+        {
+            year: '17 september 2025',
+            title: 'Officiële oprichting',
+            description: 'VM Vision wordt officieel opgericht met een duidelijke missie en visie om organisaties vooruit te helpen.',
             icon: FaHandshake
         },
         {
-            year: '2021',
-            title: 'First Major Project',
-            description: 'Successfully launched our first DeFi protocol with $1M+ TVL.',
-            icon: FaRocket
-        },
-        {
-            year: '2022',
-            title: 'Team Expansion',
-            description: 'Grew our team to 10+ blockchain experts and developers.',
-            icon: FaUsers
-        },
-        {
-            year: '2023',
-            title: 'Industry Recognition',
-            description: 'Received multiple awards for innovation in blockchain technology.',
-            icon: FaAward
-        },
-        {
-            year: '2024',
-            title: 'Global Expansion',
-            description: 'Expanded services globally with clients across 15+ countries.',
-            icon: FaGlobe
+            year: 'Heden',
+            title: 'Klaar om jouw bedrijf te helpen',
+            description: 'Met veel kennis en ervaring staat VM Vision klaar om samen met jou digitale oplossingen te realiseren.',
+            icon: FaRocket,
+            cta: {
+                label: 'Neem contact op',
+                link: '/contact'
+            }
         }
     ];
 
@@ -148,7 +159,7 @@ const About = () => {
                             </p>
                             <p>
                                 Met een brede blik op technologie werken we aan uiteenlopende projecten, van maatwerkapplicaties tot adviestrajecten.
-                                Mijn kracht ligt in het vertalen van complexe vraagstukken naar praktische en schaalbare softwareoplossingen.
+                                Onze kracht ligt in het vertalen van complexe vraagstukken naar praktische en schaalbare softwareoplossingen.
                             </p>
                             <p>
                                 Wat VM Vision onderscheidt, is de focus op samenwerking en betrouwbaarheid.
@@ -166,7 +177,7 @@ const About = () => {
                             <div className="story-card">
                                 <FaLightbulb className="story-icon" />
                                 <h3>Innovation First</h3>
-                                <p>We're always exploring the latest technologies and pushing the boundaries of what's possible in Web3.</p>
+                                <p>Wij verkennen steeds de nieuwste technologieën en verleggen de grenzen van moderne software.</p>
                             </div>
                         </motion.div>
                     </div>
@@ -183,7 +194,7 @@ const About = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        Our Core Values
+                        Core Values
                     </motion.h2>
 
                     <div className="grid grid-2">
@@ -233,9 +244,7 @@ const About = () => {
                                 whileHover={{ y: -10 }}
                             >
                                 <div className="team-image">
-                                    <div className="placeholder-avatar">
-                                        {member.name.split(' ').map(n => n[0]).join('')}
-                                    </div>
+                                    <img src={member.image} alt={member.name} className="team-photo" />
                                 </div>
                                 <h3>{member.name}</h3>
                                 <p className="team-role">{member.role}</p>
@@ -270,12 +279,17 @@ const About = () => {
                                 viewport={{ once: true }}
                             >
                                 <div className="timeline-content">
-                                    <div className="timeline-year">{milestone.year}</div>
                                     <div className="timeline-icon">
                                         <milestone.icon />
                                     </div>
+                                    <div className="timeline-year">{milestone.year}</div>
                                     <h3>{milestone.title}</h3>
                                     <p>{milestone.description}</p>
+                                    {milestone.cta && (
+                                        <Link to={milestone.cta.link} className="btn-secondary timeline-cta">
+                                            {milestone.cta.label}
+                                        </Link>
+                                    )}
                                 </div>
                             </motion.div>
                         ))}

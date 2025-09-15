@@ -2,6 +2,15 @@
     min-height: 100vh;
 }
 
+/* Utility */
+.text-white {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+}
+
 /* Services Hero */
 .services-hero {
     min-height: 60vh;
@@ -176,7 +185,7 @@
 .step-number {
     font-size: 3rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

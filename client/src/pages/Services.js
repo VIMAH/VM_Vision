@@ -58,129 +58,102 @@ const Services = () => {
 
     const services = [
         {
-            icon: FaProjectDiagram,
-            title: 'Software Architectuur',
-            id: 'software-architectuur',
-            description: 'Ontwerp en realiseer schaalbare, veilige en toekomstbestendige software-architecturen.',
+            icon: FaChartLine,
+            title: 'Strategie & Advies',
+            id: 'strategie-advies',
+            description:
+                'Wij helpen organisaties richting te geven aan hun digitale toekomst. Van IT-strategie tot consultancy en leiderschap: we zorgen dat technologie en business elkaar versterken.',
             features: [
-                'Schaalbare en modulaire architectuur',
-                'Cloud-native oplossingen',
-                'Integratie van bestaande systemen',
-                'Security by design',
-                'API & microservices architectuur',
-                'Documentatie & best practices'
+                'Strategisch advies & roadmap',
+                'Software/IT strategie',
+                'Workshops & kennisoverdracht',
+                'Proof-of-Concepts',
+                'Stakeholder- en teambegeleiding'
             ],
             price: 'Op maat',
-            color: '#4f46e5'
+            color: '#f59e0b'
         },
         {
-            icon: FaCode,
-            title: 'Software Ontwikkeling',
-            id: 'software-ontwikkeling',
-            description: 'End-to-end softwareontwikkeling met moderne frameworks en agile werkwijze.',
+            icon: FaProjectDiagram,
+            title: 'Ontwerp & Ontwikkeling',
+            id: 'ontwerp-ontwikkeling',
+            description:
+                'Wij ontwerpen en realiseren schaalbare en toekomstbestendige software. Van architectuur tot development zorgen we voor oplossingen die écht werken.',
             features: [
+                'Software architectuur',
+                'Enterprise architectuur',
+                'Business architectuur',
                 'Full-stack ontwikkeling',
-                'Web & mobiele applicaties',
-                'Koppelingen & API-ontwikkeling',
-                'Test-driven development',
-                'CI/CD pipelines',
-                'Onderhoud & support'
+                'API-ontwikkeling & integraties',
+                'DevOps'
             ],
             price: 'Op maat',
             color: '#10b981'
         },
         {
-            icon: FaChalkboardTeacher,
-            title: 'Software Consultant',
-            id: 'software-consultant',
-            description: 'Advies en begeleiding bij het kiezen, ontwerpen en implementeren van softwareoplossingen.',
-            features: [
-                'Strategisch advies',
-                'Proof-of-Concepts',
-                'Technologie selectie',
-                'Workshops & kennisoverdracht',
-                'Roadmap ontwikkeling',
-                'Begeleiding implementatie'
-            ],
-            price: 'Vanaf €2.000',
-            color: '#f59e0b'
-        },
-        {
-            icon: FaChartLine,
-            title: 'Software/IT Strategie',
-            id: 'software-it-strategie',
-            description: 'Helpt organisaties bij het ontwikkelen van een toekomstgerichte IT- en softwarestrategie.',
-            features: [
-                'Digitale transformatie',
-                'Enterprise IT strategie',
-                'Cloud strategie',
-                'Architectuurkeuzes',
-                'Innovatie & technologie trends',
-                'Business alignment'
-            ],
-            price: 'Op maat',
-            color: '#ef4444'
-        },
-        {
             icon: FaIdCard,
-            title: 'Digitale Identiteiten',
-            id: 'digitale-identiteiten',
-            description: 'Expertise in identiteitsbeheer en implementatie van moderne IAM-oplossingen.',
+            title: 'Identiteit & Veiligheid',
+            id: 'identiteit-veiligheid',
+            description:
+                'Veiligheid en vertrouwen zijn cruciaal in de digitale wereld. Wij bieden expertise in IAM, digitale identiteiten en moderne wallet-oplossingen.',
             features: [
                 'IAM systemen',
-                'Single Sign-On (SSO)',
-                'Self-Sovereign Identity (SSI)',
-                'EUDI Wallet & NL Wallet integratie',
+                'Digitale identiteiten',
+                'EUDI Wallet & NL Wallet',
                 'Authenticatie & autorisatie',
                 'Compliance & security'
             ],
             price: 'Op maat',
             color: '#8b5cf6'
-        },
-        {
-            icon: FaUsersCog,
-            title: 'PO / Scrum Master',
-            id: 'po-scrum-master',
-            description: 'Begeleiding van agile teams om maximale waarde te leveren met Scrum en DevOps.',
-            features: [
-                'Agile coaching',
-                'Scrum implementatie',
-                'Product backlog management',
-                'Stakeholder management',
-                'Team coaching',
-                'Procesverbetering'
-            ],
-            price: 'Op maat',
-            color: '#06b6d4'
         }
     ];
+
 
     const process = [
         {
             step: '01',
-            title: 'Discovery & Planning',
-            description: 'We analyze your requirements and create a detailed project roadmap.',
-            icon: FaChartLine
+            title: 'Verkennen & Begrijpen',
+            description:
+                'We starten met gesprekken om jouw organisatie, doelen en uitdagingen écht te begrijpen.',
+            icon: FaUsersCog
         },
         {
             step: '02',
-            title: 'Design & Architecture',
-            description: 'Our team designs the technical architecture and user experience.',
-            icon: FaCode
+            title: 'Analyseren & Inzicht',
+            description:
+                'We onderzoeken de huidige situatie en brengen kansen, risico’s en mogelijkheden in kaart.',
+            icon: FaChartLine
         },
         {
             step: '03',
-            title: 'Development & Testing',
-            description: 'We build your solution with rigorous testing and security audits.',
-            icon: FaCogs
+            title: 'Strategie & Richting',
+            description:
+                'Samen bepalen we de koers: een duidelijke roadmap die aansluit bij jouw ambities.',
+            icon: FaChalkboardTeacher
         },
         {
             step: '04',
-            title: 'Deployment & Launch',
-            description: 'We deploy your solution and provide ongoing support and maintenance.',
+            title: 'Ontwerpen & Adviseren',
+            description:
+                'We vertalen strategie naar concrete architectuur, concepten of oplossingen.',
+            icon: FaProjectDiagram
+        },
+        {
+            step: '05',
+            title: 'Realiseren & Begeleiden',
+            description:
+                'Van implementatie tot teamcoaching: we zorgen dat plannen ook echt resultaat opleveren.',
+            icon: FaCode
+        },
+        {
+            step: '06',
+            title: 'Evalueren & Verbeteren',
+            description:
+                'We meten de impact, leren van de resultaten en optimaliseren waar nodig.',
             icon: FaRocket
         }
     ];
+
 
     const faqs = [
         {
@@ -222,7 +195,7 @@ const Services = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            Our <span className="text-gradient">Web3 Services</span>
+                            Onze <span className="text-gradient">Software diensten</span>
                         </motion.h1>
 
                         <motion.p
@@ -231,7 +204,7 @@ const Services = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
-                            Comprehensive blockchain solutions tailored to your business needs
+                            Moderne softwareoplossingen afgestemd op de doelen van jouw organisatie
                         </motion.p>
                     </motion.div>
                 </div>
@@ -247,7 +220,7 @@ const Services = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        What We Offer
+                        Onze <span className="text-white">diensten</span>
                     </motion.h2>
 
                     <div className="grid grid-2">
@@ -288,7 +261,7 @@ const Services = () => {
                                 </div>
 
                                 <Link to="/contact" className="btn-primary service-btn">
-                                    Get Quote
+                                    Neem contact op
                                     <FaArrowRight />
                                 </Link>
                             </motion.div>
@@ -307,7 +280,7 @@ const Services = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        Our Development Process
+                        Onze <span className="text-white">aanpak</span>
                     </motion.h2>
 
                     <div className="process-timeline">
@@ -344,7 +317,7 @@ const Services = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        Frequently Asked Questions
+                        Onze <span className="text-white">aanpak</span>
                     </motion.h2>
 
                     <div className="faq-container">
@@ -379,17 +352,17 @@ const Services = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        <h2>Ready to Start Your Web3 Project?</h2>
+                        <h2>Klaar om te starten met jouw digitale toekomst?</h2>
                         <p>
-                            Let's discuss your requirements and create a custom solution that drives your business forward.
+                            Laten we jouw doelen bespreken en samen een oplossing creëren die je organisatie vooruit helpt.
                         </p>
                         <div className="cta-actions">
                             <Link to="/contact" className="btn-primary">
-                                Start Your Project
+                                kom in contact
                                 <FaArrowRight />
                             </Link>
                             <Link to="/projects" className="btn-secondary">
-                                View Our Work
+                                Bekijk onze projecten
                             </Link>
                         </div>
                     </motion.div>
