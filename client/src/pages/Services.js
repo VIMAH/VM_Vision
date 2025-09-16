@@ -157,23 +157,27 @@ const Services = () => {
 
     const faqs = [
         {
-            question: 'What blockchain networks do you support?',
+            question: 'Business Wallet EU CEO',
             answer: 'We support Ethereum, Polygon, BSC, Arbitrum, Optimism, and other EVM-compatible chains. We can also work with Solana, Cosmos, and other non-EVM chains based on your requirements.'
         },
         {
-            question: 'How long does a typical project take?',
+            question: 'Rijkswaterstaat WVL/CIV',
             answer: 'Project timelines vary based on complexity. Simple smart contracts take 2-4 weeks, while full DeFi protocols can take 3-6 months. We provide detailed timelines during the planning phase.'
         },
         {
-            question: 'Do you provide security audits?',
+            question: 'Kamer van Koophandel Innovatielab',
             answer: 'Yes, all our smart contracts undergo thorough security audits. We also work with third-party audit firms for additional verification when required.'
         },
         {
-            question: 'What is your pricing model?',
+            question: 'WEBUILD Consortium managers',
             answer: 'We offer both fixed-price and hourly billing options. Fixed-price projects include detailed specifications and milestones. Hourly rates are available for ongoing development and consulting.'
         },
         {
-            question: 'Do you provide ongoing support?',
+            question: 'De Haagse Hogeschool Docenten',
+            answer: 'Communicatief zijn ze heel sterk, ze kunnen complexe technologiën goed toelichten en overbrengen. Daarnaast hebben ze veel kennis en ervaring.'
+        },
+        {
+            question: 'Cheqd Ceo',
             answer: 'Yes, we offer comprehensive support packages including bug fixes, updates, monitoring, and maintenance. Support terms are included in all project contracts.'
         }
     ];
@@ -317,7 +321,7 @@ const Services = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        Onze <span className="text-white">aanpak</span>
+                        Verhalen van <span className="text-white">klanten</span>
                     </motion.h2>
 
                     <div className="faq-container">
