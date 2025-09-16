@@ -265,8 +265,10 @@ const Services = () => {
                                 </div>
 
                                 <Link to="/contact" className="btn-primary service-btn">
-                                    Neem contact op
-                                    <FaArrowRight />
+                                    <span>Neem contact op</span>
+                                    <span style={{ marginLeft: 12, display: 'inline-flex', alignItems: 'center' }}>
+                                        <FaArrowRight />
+                                    </span>
                                 </Link>
                             </motion.div>
                         ))}
@@ -336,6 +338,9 @@ const Services = () => {
                             >
                                 <div className="faq-question">
                                     <h3>{faq.question}</h3>
+                                    <div className="faq-company-logo">
+                                        {/* Company logo will be added here */}
+                                    </div>
                                 </div>
                                 <div className="faq-answer">
                                     <p>{faq.answer}</p>

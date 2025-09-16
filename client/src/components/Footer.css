@@ -6,7 +6,7 @@
 
 .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 2fr 0.6fr 0.9fr 1.5fr;
     gap: 40px;
     padding: 60px 0 40px;
 }
@@ -100,6 +100,50 @@
     font-weight: 600;
 }
 
+/* Company Info Card */
+.company-info-card {
+    background: rgba(79, 70, 229, 0.1);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    backdrop-filter: blur(10px);
+    width: 100%;
+    max-width: 100%;
+    margin-left: -5px;
+}
+
+.company-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    gap: 10px;
+}
+
+.company-info-item:last-child {
+    border-bottom: none;
+}
+
+.company-info-label {
+    color: #d1d5db;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.company-info-value {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+    text-align: right;
+    flex-shrink: 1;
+    word-break: break-all;
+    min-width: 0;
+    letter-spacing: 0.5px;
+}
+
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 30px 0;
@@ -148,6 +192,21 @@
     .social-links {
         justify-content: center;
     }
+
+    .company-info-card {
+        padding: 15px;
+        margin-top: 15px;
+        margin-left: -5px;
+    }
+
+    .company-info-item {
+        padding: 6px 0;
+    }
+
+    .company-info-label,
+    .company-info-value {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -167,5 +226,28 @@
         width: 35px;
         height: 35px;
         font-size: 1rem;
+    }
+
+    .company-info-card {
+        padding: 12px;
+        margin-top: 12px;
+        margin-left: -5px;
+    }
+
+    .company-info-item {
+        padding: 5px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .company-info-value {
+        text-align: left;
+        word-break: break-all;
+    }
+
+    .company-info-label,
+    .company-info-value {
+        font-size: 0.85rem;
     }
 }

@@ -15,19 +15,16 @@ const Footer = () => {
 
     const quickLinks = [
         { path: '/', label: 'Home' },
-        { path: '/about', label: 'About' },
-        { path: '/services', label: 'Services' },
-        { path: '/projects', label: 'Projects' },
-        { path: '/contact', label: 'Contact' },
+        { path: '/about', label: 'Over ons' },
+        { path: '/services', label: 'Diensten' },
+        { path: '/projects', label: 'Projecten' },
+        { path: '/contact', label: 'contact' },
     ];
 
     const services = [
-        { name: 'Software Architectuur', id: 'software-architectuur' },
-        { name: 'Software Ontwikkeling', id: 'software-ontwikkeling' },
-        { name: 'Software Consultant', id: 'software-consultant' },
-        { name: 'Software/IT Strategie', id: 'software-it-strategie' },
-        { name: 'Digitale Identiteiten', id: 'digitale-identiteiten' },
-        { name: 'PO / Scrum Master', id: 'po-scrum-master' },
+        { name: 'Strategie & Advies', id: 'strategie-advies' },
+        { name: 'Ontwerp & Ontwikkeling', id: 'ontwerp-ontwikkeling' },
+        { name: 'Identiteit & Veiligheid', id: 'identiteit-veiligheid' },
     ];
 
     return (
@@ -89,7 +86,7 @@ const Footer = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         viewport={{ once: true }}
                     >
-                        <h4>Our Services</h4>
+                        <h4>Onze Diensten</h4>
                         <ul className="footer-links">
                             {services.map((service, index) => (
                                 <li key={index}>
@@ -111,6 +108,21 @@ const Footer = () => {
                             <p>
                                 <strong>Email:</strong> contact@vmvision.com
                             </p>
+                        </div>
+
+                        <div className="company-info-card">
+                            <div className="company-info-item">
+                                <span className="company-info-label">KvK:</span>
+                                <span className="company-info-value">CHOSSELL</span>
+                            </div>
+                            <div className="company-info-item">
+                                <span className="company-info-label">BTW:</span>
+                                <span className="company-info-value">NL 123456789 B 01</span>
+                            </div>
+                            <div className="company-info-item">
+                                <span className="company-info-label">IBAN:</span>
+                                <span className="company-info-value">NL20 INGB 0001234567</span>
+                            </div>
                         </div>
                     </motion.div>
                 </div>

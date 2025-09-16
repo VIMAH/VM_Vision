@@ -11,7 +11,16 @@ import {
     FaEthereum,
     FaBitcoin,
     FaCoins,
-    FaArrowRight
+    FaArrowRight,
+    FaCheckCircle,
+    FaCode,
+    FaSmile,
+    FaClock,
+    FaProjectDiagram,
+    FaLaptopCode,
+    FaUserTie,
+    FaIdCard,
+    FaKey
 } from 'react-icons/fa';
 import './Home.css';
 
@@ -20,48 +29,48 @@ const Home = () => {
 
     const features = [
         {
-            icon: FaRocket,
+            icon: FaProjectDiagram,
             title: 'Software Architectuur',
-            description: 'Ontwerp schaalbare en betrouwbare software-architecturen die klaar zijn voor de toekomst.',
+            description: 'Sterke fundamenten voor jouw digitale toekomst. Wij ontwerpen systemen die schaalbaar, stabiel en klaar voor groei zijn.',
             color: '#4f46e5'
         },
         {
-            icon: FaShieldAlt,
+            icon: FaLaptopCode,
             title: 'Software Ontwikkeling',
-            description: 'Bouw moderne en gebruiksvriendelijke applicaties die jouw visie omzetten in werkende oplossingen.',
+            description: 'Van idee tot applicatie. We bouwen moderne software die gebruiksvriendelijk is én waarde toevoegt.',
             color: '#10b981'
         },
         {
-            icon: FaCogs,
+            icon: FaUserTie,
             title: 'Software Consultant',
-            description: 'Krijg deskundig advies en begeleiding om de juiste technologische keuzes te maken.',
+            description: 'Een onafhankelijke blik. Praktisch en deskundig advies om de juiste keuzes in technologie te maken.',
             color: '#f59e0b'
         },
         {
             icon: FaChartLine,
             title: 'Software/IT Strategie',
-            description: 'Ontwikkel een heldere IT-strategie die aansluit bij de doelen en groei van jouw organisatie.',
+            description: 'Technologie in lijn met je business. Wij vertalen ambities naar een slimme en toekomstgerichte IT-roadmap.',
             color: '#ef4444'
         },
         {
-            icon: FaCogs,
+            icon: FaIdCard,
             title: 'Digitale Identiteiten',
-            description: 'Implementeer veilige en efficiënte oplossingen voor digitale identiteiten met ontwikkeling en integratie van wallets zoals de EUDI Wallet en NL Wallet.',
-            color: '#f59e0b'
+            description: 'Van EUDI Wallet tot NL Wallet: veilige, efficiënte en compliant oplossingen voor digitale toegang en identificatie.',
+            color: '#8b5cf6'
         },
         {
-            icon: FaCogs,
+            icon: FaKey,
             title: 'IAM Systemen',
-            description: 'Beheer en beveilig toegangsrechten met correcte kennisgeving van Identity & Access Management systemen.',
-            color: '#f59e0b'
+            description: 'Grip op wie toegang heeft. Wij helpen organisaties met veilige IAM-oplossingen voor een betrouwbare digitale omgeving.',
+            color: '#06b6d4'
         }
     ];
 
     const stats = [
-        { label: 'Projecten afgerond', value: '5+', icon: FaRocket },
-        { label: 'Codelines', value: '1 mln+', icon: FaCogs },
-        { label: 'Tevreden klanten', value: '8+', icon: FaShieldAlt },
-        { label: 'Jaren Ervaring', value: '3+', icon: FaChartLine }
+        { label: 'Projecten afgerond', value: '5+', icon: FaCheckCircle, color: '#10b981' },
+        { label: 'Codelines', value: '1 mln+', icon: FaCode, color: '#4f46e5' },
+        { label: 'Tevreden klanten', value: '8+', icon: FaSmile, color: '#f59e0b' },
+        { label: 'Jaren Ervaring', value: '3+', icon: FaClock, color: '#ef4444' }
     ];
 
     const cryptocurrencies = [
@@ -167,7 +176,7 @@ const Home = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        VM Vision
+                        Technologie die werkt
                     </motion.h2>
 
                     <div className="grid grid-2">
@@ -216,7 +225,7 @@ const Home = () => {
                                 viewport={{ once: true }}
                                 whileHover={{ scale: 1.05 }}
                             >
-                                <div className="stat-icon">
+                                <div className="stat-icon" style={{ color: stat.color }}>
                                     <stat.icon />
                                 </div>
                                 <div className="stat-value">{stat.value}</div>

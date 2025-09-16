@@ -16,40 +16,40 @@ import './About.css';
 const About = () => {
     const values = [
         {
-            icon: FaCode,
+            icon: FaLightbulb,
             title: 'Visie',
             description: 'Wij kijken vooruit en vertalen complexe uitdagingen naar heldere, toekomstgerichte softwareoplossingen.',
             color: '#4f46e5'
         },
         {
-            icon: FaShieldAlt,
+            icon: FaRocket,
             title: 'Missie',
             description: 'Wij helpen organisaties hun digitale ambities te realiseren met betrouwbare strategie, architectuur en ontwikkeling.',
             color: '#10b981'
         },
         {
-            icon: FaUsers,
+            icon: FaCode,
             title: 'Innovatie',
             description: 'Wij benutten de nieuwste technologieën en zetten ze om in praktische, waardevolle oplossingen voor onze klanten.',
             color: '#f59e0b'
         },
         {
-            icon: FaRocket,
+            icon: FaHandshake,
             title: 'Samenwerking',
             description: 'Wij geloven in co-creatie en bouwen duurzame relaties door open communicatie en gedeelde verantwoordelijkheid.',
             color: '#ef4444'
         },
         {
-            icon: FaUsers,
+            icon: FaShieldAlt,
             title: 'Betrouwbaarheid',
             description: 'Wij staan voor consistentie, transparantie en kwaliteit, zodat klanten altijd op ons kunnen rekenen.',
-            color: '#f59e0b'
+            color: '#8b5cf6'
         },
         {
             icon: FaUsers,
             title: 'Leiderschap',
             description: 'Wij nemen initiatief, tonen verantwoordelijkheid en geven richting in de snel veranderende digitale wereld.',
-            color: '#f59e0b'
+            color: '#06b6d4'
         },
     ];
     const team = [
@@ -152,7 +152,7 @@ const About = () => {
                             transition={{ duration: 0.8 }}
                             viewport={{ once: true }}
                         >
-                            <h2>Our Story</h2>
+                            <h2>Ons Verhaal</h2>
                             <p>
                                 VM Vision is ontstaan vanuit één duidelijke gedachte: organisaties helpen hun ideeën om te zetten in gebruiksvriendelijke en toekomstbestendige software.
                                 Bij VM Vision combineren we ontwerp, ontwikkeling en advies om oplossingen te creëren die écht waarde toevoegen.
@@ -194,7 +194,7 @@ const About = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        Core Values
+                        Onze Waarden
                     </motion.h2>
 
                     <div className="grid grid-2">
@@ -265,7 +265,7 @@ const About = () => {
                         transition={{ duration: 0.6 }}
                         viewport={{ once: true }}
                     >
-                        Our Journey
+                        Onze Reis
                     </motion.h2>
 
                     <div className="timeline-container">
