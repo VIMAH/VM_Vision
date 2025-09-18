@@ -7,7 +7,7 @@ import './Navbar.css';
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const { isConnected, account, connectWallet, disconnectWallet, isLoading } = useWeb3();
+    const { } = useWeb3();
     const location = useLocation();
 
     useEffect(() => {
@@ -19,10 +19,10 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const formatAddress = (address) => {
-        if (!address) return '';
-        return `${address.slice(0, 6)}...${address.slice(-4)}`;
-    };
+    // const formatAddress = (address) => {
+    //     if (!address) return '';
+    //     return `${address.slice(0, 6)}...${address.slice(-4)}`;
+    // };
 
     const navItems = [
         { path: '/', label: 'Home' },

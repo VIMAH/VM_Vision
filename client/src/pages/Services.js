@@ -3,16 +3,10 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
     FaCode,
-    FaShieldAlt,
     FaRocket,
-    FaCoins,
     FaChartLine,
-    FaMobile,
-    FaDatabase,
-    FaCogs,
     FaArrowRight,
     FaCheck,
-    FaTimes,
     FaProjectDiagram,
     FaChalkboardTeacher,
     FaIdCard,
@@ -62,7 +56,7 @@ const Services = () => {
         return () => {
             window.removeEventListener('hashchange', handleHashChange);
         };
-    }, []);
+    }, [services]);
 
     const services = [
         {

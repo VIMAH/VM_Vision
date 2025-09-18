@@ -20,74 +20,74 @@ const Projects = () => {
     const [error, setError] = useState(null);
 
     // Function to get icon based on language
-    const getLanguageIcon = (language) => {
-        switch (language?.toLowerCase()) {
-            case 'javascript':
-                return FaJs;
-            case 'python':
-                return FaPython;
-            case 'css':
-                return FaCss3Alt;
-            case 'solidity':
-                return FaEthereum;
-            case 'c#':
-                return FaCode;
-            default:
-                return FaCode;
-        }
-    };
+    // const getLanguageIcon = (language) => {
+    //     switch (language?.toLowerCase()) {
+    //         case 'javascript':
+    //             return FaJs;
+    //         case 'python':
+    //             return FaPython;
+    //         case 'css':
+    //             return FaCss3Alt;
+    //         case 'solidity':
+    //             return FaEthereum;
+    //         case 'c#':
+    //             return FaCode;
+    //         default:
+    //             return FaCode;
+    //     }
+    // };
 
     // Function to get color based on language
-    const getLanguageColor = (language) => {
-        switch (language?.toLowerCase()) {
-            case 'javascript':
-                return '#f7df1e';
-            case 'python':
-                return '#3776ab';
-            case 'css':
-                return '#1572b6';
-            case 'solidity':
-                return '#627eea';
-            case 'c#':
-                return '#239120';
-            default:
-                return '#4f46e5';
-        }
-    };
+    // const getLanguageColor = (language) => {
+    //     switch (language?.toLowerCase()) {
+    //         case 'javascript':
+    //             return '#f7df1e';
+    //         case 'python':
+    //             return '#3776ab';
+    //         case 'css':
+    //             return '#1572b6';
+    //         case 'solidity':
+    //             return '#627eea';
+    //         case 'c#':
+    //             return '#239120';
+    //         default:
+    //             return '#4f46e5';
+    //     }
+    // };
 
     // Function to get tech stack based on repository
-    const getTechStack = (repo) => {
-        const techStack = [];
+    // const getTechStack = (repo) => {
+    //     const techStack = [];
 
-        if (repo.language) {
-            techStack.push(repo.language);
-        }
+    //     if (repo.language) {
+    //         techStack.push(repo.language);
+    //     }
 
-        // Add additional technologies based on repository name and description
-        if (repo.name.toLowerCase().includes('react') || repo.description?.toLowerCase().includes('react')) {
-            techStack.push('React');
-        }
-        if (repo.name.toLowerCase().includes('vite') || repo.description?.toLowerCase().includes('vite')) {
-            techStack.push('Vite');
-        }
-        if (repo.name.toLowerCase().includes('chainlink') || repo.description?.toLowerCase().includes('chainlink')) {
-            techStack.push('Chainlink');
-        }
-        if (repo.name.toLowerCase().includes('metamask') || repo.description?.toLowerCase().includes('metamask')) {
-            techStack.push('MetaMask');
-        }
-        if (repo.name.toLowerCase().includes('dapp') || repo.description?.toLowerCase().includes('dapp')) {
-            techStack.push('Web3.js');
-        }
-        if (repo.name.toLowerCase().includes('wallet') || repo.description?.toLowerCase().includes('wallet')) {
-            techStack.push('Blockchain');
-        }
-        if (repo.name.toLowerCase().includes('visualizer') || repo.description?.toLowerCase().includes('visualizer')) {
-            techStack.push('Data Analysis');
-        }
+    //     // Add additional technologies based on repository name and description
+    //     if (repo.name.toLowerCase().includes('react') || repo.description?.toLowerCase().includes('react')) {
+    //         techStack.push('React');
+    //     }
+    //     if (repo.name.toLowerCase().includes('vite') || repo.description?.toLowerCase().includes('vite')) {
+    //         techStack.push('Vite');
+    //     }
+    //     if (repo.name.toLowerCase().includes('chainlink') || repo.description?.toLowerCase().includes('chainlink')) {
+    //         techStack.push('Chainlink');
+    //     }
+    //     if (repo.name.toLowerCase().includes('metamask') || repo.description?.toLowerCase().includes('metamask')) {
+    //         techStack.push('MetaMask');
+    //     }
+    //     if (repo.name.toLowerCase().includes('dapp') || repo.description?.toLowerCase().includes('dapp')) {
+    //         techStack.push('Web3.js');
+    //     }
+    //     if (repo.name.toLowerCase().includes('wallet') || repo.description?.toLowerCase().includes('wallet')) {
+    //         techStack.push('Blockchain');
+    //     }
+    //     if (repo.name.toLowerCase().includes('visualizer') || repo.description?.toLowerCase().includes('visualizer')) {
+    //         techStack.push('Data Analysis');
+    //     }
 
-        return techStack.length > 0 ? techStack : ['Web Development'];
-    };
+    //     return techStack.length > 0 ? techStack : ['Web Development'];
+    // };
 
     // Function to fetch README content
     const fetchReadme = async (repo) => {
