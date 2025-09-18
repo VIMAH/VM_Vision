@@ -1,0 +1,33 @@
+{
+    "name": "vm-vision-server",
+    "version": "1.0.0",
+    "description": "VM Vision Web3 Backend Server",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "nodemon server.js"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "ethers": "^6.8.1",
+        "express": "^4.18.2",
+        "express-rate-limit": "^7.1.5",
+        "helmet": "^7.1.0",
+        "multer": "^1.4.5-lts.1",
+        "swagger-jsdoc": "^6.2.8",
+        "swagger-ui-express": "^5.0.1",
+        "web3": "^4.2.2"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.2"
+    },
+    "keywords": [
+        "web3",
+        "nodejs",
+        "api",
+        "blockchain"
+    ],
+    "author": "VM Vision",
+    "license": "MIT"
+}

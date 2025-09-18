@@ -1,0 +1,35 @@
+{
+    "name": "vm-vision-contracts",
+    "version": "1.0.0",
+    "description": "VM Vision Smart Contracts",
+    "main": "index.js",
+    "scripts": {
+        "compile": "hardhat compile",
+        "test": "hardhat test",
+        "deploy:local": "hardhat run scripts/deploy.js --network localhost",
+        "deploy:sepolia": "hardhat run scripts/deploy.js --network sepolia",
+        "deploy:mainnet": "hardhat run scripts/deploy.js --network mainnet",
+        "verify:sepolia": "hardhat verify --network sepolia",
+        "verify:mainnet": "hardhat verify --network mainnet",
+        "node": "hardhat node",
+        "clean": "hardhat clean"
+    },
+    "keywords": [
+        "solidity",
+        "smart-contracts",
+        "web3",
+        "defi",
+        "nft",
+        "dao"
+    ],
+    "author": "VM Vision",
+    "license": "MIT",
+    "devDependencies": {
+        "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+        "hardhat": "^2.19.0"
+    },
+    "dependencies": {
+        "@openzeppelin/contracts": "^4.9.6",
+        "dotenv": "^16.3.1"
+    }
+}
