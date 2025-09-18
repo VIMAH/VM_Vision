@@ -8,6 +8,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
 import Services from './pages/Services';
+import Web3Dashboard from './components/Web3Dashboard';
 import './App.css';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                             <Route path="/projects" element={<Projects />} />
                             <Route path="/contact" element={<Contact />} />
                             <Route path="/services" element={<Services />} />
+                            <Route path="/dashboard" element={<Web3Dashboard />} />
                         </Routes>
                     </main>
                     <Footer />

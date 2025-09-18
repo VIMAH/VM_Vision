@@ -52,7 +52,7 @@ const Web3Dashboard = () => {
             setGasData(gasPrices);
 
         } catch (err) {
-            setError('Failed to fetch wallet data');
+            setError('Failed to fetch wallet data. Please check your connection and try again.');
             console.error('Error fetching wallet data:', err);
         } finally {
             setLoading(false);

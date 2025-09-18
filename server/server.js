@@ -39,11 +39,7 @@ const swaggerOptions = {
                         name: { type: 'string', example: 'John Doe' },
                         email: { type: 'string', format: 'email', example: 'john@example.com' },
                         company: { type: 'string', example: 'Web3 Corp' },
-                        projectType: { type: 'string', example: 'DeFi Platform' },
-                        budget: { type: 'string', example: '$10,000 - $50,000' },
-                        timeline: { type: 'string', example: '3-6 months' },
                         message: { type: 'string', example: 'I need help building a DeFi platform' },
-                        walletAddress: { type: 'string', example: '0x1234...5678' }
                     }
                 },
                 BalanceResponse: {
@@ -92,7 +88,13 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 // Middleware
 app.use(helmet());
 app.use(cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:3000',
+    origin: [
+        process.env.CLIENT_URL || 'http://localhost:3000',
+        'https://vmvision.com',
+        'https://www.vmvision.com',
+        'https://vm-vision.vercel.app',
+        'https://vm-vision.netlify.app'
+    ],
     credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
@@ -109,9 +111,9 @@ app.use('/api/', limiter);
 // Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-// Web3 Configuration
-const web3 = new Web3(process.env.ETHEREUM_RPC_URL || 'https://mainnet.infura.io/v3/YOUR_INFURA_KEY');
-const provider = new ethers.JsonRpcProvider(process.env.ETHEREUM_RPC_URL || 'https://mainnet.infura.io/v3/YOUR_INFURA_KEY');
+// Web3 Configuration (only if RPC URL is provided)
+const web3 = process.env.ETHEREUM_RPC_URL ? new Web3(process.env.ETHEREUM_RPC_URL) : null;
+const provider = process.env.ETHEREUM_RPC_URL ? new ethers.JsonRpcProvider(process.env.ETHEREUM_RPC_URL) : null;
 
 // Routes
 /**
@@ -185,7 +187,7 @@ app.get('/api/health', (req, res) => {
 // Contact form submission
 app.post('/api/contact', async (req, res) => {
     try {
-        const { name, email, company, projectType, budget, timeline, message, walletAddress } = req.body;
+        const { name, email, company, message, } = req.body;
 
         // Basic validation
         if (!name || !email || !message) {
@@ -266,6 +268,19 @@ app.get('/api/blockchain/balance/:address', async (req, res) => {
         // Validate Ethereum address
         if (!ethers.isAddress(address)) {
             return res.status(400).json({ error: 'Invalid Ethereum address' });
+        }
+
+        // Check if provider is configured
+        if (!provider) {
+            // Return mock data if no RPC provider configured
+            return res.json({
+                address,
+                balance: '0.1234',
+                balanceWei: '123400000000000000',
+                currency: 'ETH',
+                timestamp: new Date().toISOString(),
+                note: 'Mock data - configure ETHEREUM_RPC_URL for real data'
+            });
         }
 
         const balance = await provider.getBalance(address);

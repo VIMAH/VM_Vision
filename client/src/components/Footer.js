@@ -112,11 +112,11 @@ const Footer = () => {
 
                         <div className="company-info-card">
                             <div className="company-info-item">
-                                <span className="company-info-label">KvK:</span>
-                                <span className="company-info-value">CHOSSELL</span>
+                                <span className="company-info-label">KvK Nr:</span>
+                                <span className="company-info-value">9810208</span>
                             </div>
                             <div className="company-info-item">
-                                <span className="company-info-label">BTW:</span>
+                                <span className="company-info-label">BTW Nr:</span>
                                 <span className="company-info-value">NL 123456789 B 01</span>
                             </div>
                             <div className="company-info-item">

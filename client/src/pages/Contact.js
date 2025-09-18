@@ -38,7 +38,7 @@ const Contact = () => {
         const init = () => {
             if (window.Calendly && calendlyRef.current) {
                 window.Calendly.initInlineWidget({
-                    url: 'https://calendly.com/vinaymahadew-01?hide_gdpr_banner=1&text_color=000000&primary_color=10b981',
+                    url: process.env.REACT_APP_CALENDLY_URL || 'https://calendly.com/vinaymahadew-01?hide_gdpr_banner=1&text_color=000000&primary_color=10b981',
                     parentElement: calendlyRef.current,
                 });
                 calendlyRef.current.dataset.initialized = 'true';
@@ -125,20 +125,29 @@ const Contact = () => {
         setIsSubmitting(true);
 
         try {
-            // Simulate API call
-            await new Promise(resolve => setTimeout(resolve, 2000));
-
-            // Here you would typically send the data to your backend
-            console.log('Form submitted:', formData);
-
-            setSubmitStatus('success');
-            setFormData({
-                name: '',
-                email: '',
-                company: '',
-                message: '',
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
             });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setSubmitStatus('success');
+                setFormData({
+                    name: '',
+                    email: '',
+                    company: '',
+                    message: '',
+                });
+            } else {
+                setSubmitStatus('error');
+            }
         } catch (error) {
+            console.error('Contact form error:', error);
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);

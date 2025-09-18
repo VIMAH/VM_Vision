@@ -12,7 +12,9 @@ yarn.lock
 .env.development.local
 .env.test.local
 .env.production.local
-.env.example
+.env.production
+# Keep .env.example for reference
+# .env.example
 
 # Logs
 logs
@@ -114,18 +116,18 @@ ehthumbs.db
 Thumbs.db
 
 # React build
-build/
-dist/
+client/build/
+client/dist/
+server/build/
+server/dist/
 
 # Hardhat files
-cache/
-artifacts/
-typechain/
-typechain-types/
-
-# Hardhat network files
-.openzeppelin/
-deployments/
+contracts/cache/
+contracts/artifacts/
+contracts/typechain/
+contracts/typechain-types/
+contracts/.openzeppelin/
+contracts/deployments/
 
 # Solidity
 *.sol.bak
@@ -140,9 +142,9 @@ gas-report.txt
 # Local Hardhat network
 hardhat.log
 
-# Hardhat cache
-cache/
-artifacts/
+# Hardhat cache (already covered above)
+# cache/
+# artifacts/
 
 # TypeScript
 *.tsbuildinfo
@@ -181,11 +183,29 @@ local/
 # API keys and secrets
 secrets.json
 config/secrets.js
+*.key
+*.pem
+*.p12
+*.pfx
 
-# Build artifacts
-build/
-dist/
-out/
+# VM Vision specific
+server/uploads/
+server/logs/
+server/.env
+server/.env.production
+contracts/.env
+contracts/.env.local
+
+# Documentation and notes (keep private)
+PRODUCTION_DEPLOYMENT.md
+DEPLOYMENT_NOTES.md
+NOTES.md
+*.notes
+
+# Build artifacts (already covered above)
+# build/
+# dist/
+# out/
 
 # Test files
 test-results/
@@ -195,3 +215,25 @@ test-results.xml
 # Misc
 *.tgz
 *.tar.gz
+
+# Deployment files
+.vercel/
+.netlify/
+.railway/
+
+# IDE and editor files
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*~

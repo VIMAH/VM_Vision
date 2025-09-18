@@ -17,6 +17,7 @@ import './Projects.css';
 const Projects = () => {
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     // Function to get icon based on language
     const getLanguageIcon = (language) => {
@@ -132,6 +133,11 @@ const Projects = () => {
         const fetchRepositories = async () => {
             try {
                 const response = await fetch('https://api.github.com/users/VIMAH/repos?sort=updated&per_page=10');
+
+                if (!response.ok) {
+                    throw new Error(`GitHub API error: ${response.status}`);
+                }
+
                 const repos = await response.json();
 
                 const formattedProjects = await Promise.all(repos.map(async (repo) => {
@@ -162,7 +168,10 @@ const Projects = () => {
                 setProjects(formattedProjects);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching repositories:', error);
+                console.warn('GitHub API failed, using static projects:', error);
+                setError('GitHub API unavailable, showing featured projects');
+                // Fallback to static projects
+                setProjects(staticProjects);
                 setLoading(false);
             }
         };
@@ -372,6 +381,19 @@ const Projects = () => {
             {/* Projects Grid */}
             <section className="projects-grid section">
                 <div className="container">
+                    {error && (
+                        <div className="error-message" style={{
+                            background: 'rgba(245, 158, 11, 0.1)',
+                            border: '1px solid rgba(245, 158, 11, 0.3)',
+                            borderRadius: '8px',
+                            padding: '16px',
+                            marginBottom: '20px',
+                            color: '#f59e0b',
+                            textAlign: 'center'
+                        }}>
+                            ⚠️ {error}
+                        </div>
+                    )}
                     {loading ? (
                         <div className="loading-container">
                             <div className="loading-spinner"></div>
