@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 import { useWeb3 } from '../context/Web3Context';
 import Web3Dashboard from '../components/Web3Dashboard';
 import {
-    FaRocket,
-    FaShieldAlt,
-    FaCogs,
     FaChartLine,
     FaEthereum,
     FaBitcoin,
@@ -25,7 +22,7 @@ import {
 import './Home.css';
 
 const Home = () => {
-    const { isConnected, account } = useWeb3();
+    const { } = useWeb3();
 
     const features = [
         {
@@ -125,7 +122,7 @@ const Home = () => {
                         </motion.div>
 
                         {/* Wallet status indicator - commented out for future development
-                        {isConnected && (
+                        {false && (
                             <motion.div
                                 className="wallet-status"
                                 initial={{ opacity: 0, scale: 0.8 }}
@@ -237,7 +234,7 @@ const Home = () => {
             </section>
 
             {/* Web3 Dashboard Section */}
-            {isConnected && (
+            {false && (
                 <section className="dashboard section">
                     <div className="container">
                         <motion.h2

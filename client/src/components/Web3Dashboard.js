@@ -6,7 +6,6 @@ import {
     FaCoins,
     FaChartLine,
     FaEthereum,
-    FaBitcoin,
     FaShieldAlt,
     FaRocket,
     FaSync,
@@ -63,7 +62,7 @@ const Web3Dashboard = () => {
         if (isConnected && account) {
             fetchWalletData();
         }
-    }, [isConnected, account]);
+    }, [isConnected, account, fetchWalletData]);
 
     const formatAddress = (address) => {
         if (!address) return '';

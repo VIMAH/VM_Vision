@@ -5,9 +5,7 @@ import {
     FaEnvelope,
     FaPhone,
     FaMapMarkerAlt,
-    FaTelegram,
     FaDiscord,
-    FaTwitter,
     FaLinkedin,
     FaGithub,
     FaPaperPlane,
@@ -17,7 +15,7 @@ import {
 import './Contact.css';
 const Contact = () => {
 
-    const { isConnected, account } = useWeb3();
+    const { } = useWeb3();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -59,31 +57,31 @@ const Contact = () => {
         }
     }, []);
 
-    const projectTypes = [
-        'Smart Contract Development',
-        'DeFi Protocol',
-        'NFT Marketplace',
-        'Web3 Frontend',
-        'Blockchain Consulting',
-        'Custom Solution',
-        'Other'
-    ];
+    // const projectTypes = [
+    //     'Smart Contract Development',
+    //     'DeFi Protocol',
+    //     'NFT Marketplace',
+    //     'Web3 Frontend',
+    //     'Blockchain Consulting',
+    //     'Custom Solution',
+    //     'Other'
+    // ];
 
-    const budgetRanges = [
-        'Under $10,000',
-        '$10,000 - $25,000',
-        '$25,000 - $50,000',
-        '$50,000 - $100,000',
-        'Over $100,000'
-    ];
+    // const budgetRanges = [
+    //     'Under $10,000',
+    //     '$10,000 - $25,000',
+    //     '$25,000 - $50,000',
+    //     '$50,000 - $100,000',
+    //     'Over $100,000'
+    // ];
 
-    const timelineOptions = [
-        'ASAP',
-        '1-2 months',
-        '3-6 months',
-        '6+ months',
-        'Flexible'
-    ];
+    // const timelineOptions = [
+    //     'ASAP',
+    //     '1-2 months',
+    //     '3-6 months',
+    //     '6+ months',
+    //     'Flexible'
+    // ];
 
     const contactInfo = [
         {
@@ -315,7 +313,7 @@ const Contact = () => {
                                     </div> */}
                                 </div>
 
-                                {isConnected && (
+                                {false && (
                                     <div className="form-group">
                                         <label htmlFor="walletAddress">Wallet Address</label>
                                         <input
@@ -476,7 +474,7 @@ const Contact = () => {
                                     style={{ width: '100%', minWidth: '320px', height: '760px' }}
                                 />
 
-                                {isConnected && (
+                                {false && (
                                     <div className="form-group">
                                         <label htmlFor="walletAddress">Wallet Address</label>
                                         <input

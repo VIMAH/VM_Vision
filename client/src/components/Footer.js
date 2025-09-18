@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaDiscord, FaTelegram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaDiscord } from 'react-icons/fa';
 import './Footer.css';
 
 const Footer = () => {
