@@ -1,6 +1,6 @@
 [build]
 base = "client"
-publish = "client/build"
+publish = "build"
 command = "GENERATE_SOURCEMAP=false npm run build"
 
 [build.environment]
