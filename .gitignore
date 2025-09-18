@@ -89,7 +89,7 @@ dist
 
 # Gatsby files
 .cache/
-public
+# public (commented out to allow client/public for React app)
 
 # Storybook build outputs
 .out
@@ -164,7 +164,7 @@ cypress/screenshots/
 
 # Server uploads
 uploads/
-public/uploads/
+# public/uploads/ (commented out to allow client/public for React app)
 
 # Database
 *.db
