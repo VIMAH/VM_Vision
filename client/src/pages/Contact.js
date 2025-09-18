@@ -15,7 +15,7 @@ import {
 import './Contact.css';
 const Contact = () => {
 
-    const { } = useWeb3();
+    const { isConnected, account } = useWeb3();
     const [formData, setFormData] = useState({
         name: '',
         email: '',

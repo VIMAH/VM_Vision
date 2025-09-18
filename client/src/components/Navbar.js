@@ -7,7 +7,7 @@ import './Navbar.css';
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const { } = useWeb3();
+    const { isConnected, account, connectWallet, disconnectWallet, isLoading } = useWeb3();
     const location = useLocation();
 
     useEffect(() => {

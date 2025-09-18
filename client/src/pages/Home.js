@@ -22,7 +22,7 @@ import {
 import './Home.css';
 
 const Home = () => {
-    const { } = useWeb3();
+    const { isConnected, account } = useWeb3();
 
     const features = [
         {

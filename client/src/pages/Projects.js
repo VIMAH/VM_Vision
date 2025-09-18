@@ -7,10 +7,6 @@ import {
     FaCoins,
     FaRocket,
     FaShieldAlt,
-    FaCode,
-    FaPython,
-    FaJs,
-    FaCss3Alt,
 } from 'react-icons/fa';
 import './Projects.css';
 
