@@ -56,7 +56,7 @@ const Services = () => {
         return () => {
             window.removeEventListener('hashchange', handleHashChange);
         };
-    }, [services]);
+    }, []);
 
     const services = [
         {
