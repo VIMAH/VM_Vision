@@ -20,6 +20,14 @@ import {
 } from 'react-icons/fa';
 import './Services.css';
 
+// Import company logos
+import BWEULogo from './BWEU.png';
+import RWSLogo from './RWS_logo.jpg';
+import KVKLogo from './KVK_logo.jpg';
+import HHSLogo from './HHS_logo.png';
+import CheqdLogo from './cheqd_logo.jpeg';
+import EWCLogo from './EWC_Logo.webp';
+
 const Services = () => {
     const [activeService, setActiveService] = useState(0);
 
@@ -158,27 +166,39 @@ const Services = () => {
     const faqs = [
         {
             question: 'Business Wallet EU CEO',
-            answer: 'We support Ethereum, Polygon, BSC, Arbitrum, Optimism, and other EVM-compatible chains. We can also work with Solana, Cosmos, and other non-EVM chains based on your requirements.'
+            answer: 'We support Ethereum, Polygon, BSC, Arbitrum, Optimism, and other EVM-compatible chains. We can also work with Solana, Cosmos, and other non-EVM chains based on your requirements.',
+            logo: BWEULogo,
+            website: 'https://businesswallet.eu/'
         },
         {
             question: 'Rijkswaterstaat WVL/CIV',
-            answer: 'Project timelines vary based on complexity. Simple smart contracts take 2-4 weeks, while full DeFi protocols can take 3-6 months. We provide detailed timelines during the planning phase.'
+            answer: 'Project timelines vary based on complexity. Simple smart contracts take 2-4 weeks, while full DeFi protocols can take 3-6 months. We provide detailed timelines during the planning phase.',
+            logo: RWSLogo,
+            website: 'https://www.rijkswaterstaat.nl/over-ons/onze-organisatie/organisatiestructuur/centrale-informatievoorziening'
         },
         {
             question: 'Kamer van Koophandel Innovatielab',
-            answer: 'Yes, all our smart contracts undergo thorough security audits. We also work with third-party audit firms for additional verification when required.'
+            answer: 'Vinay is assertief, enthousiast en leergierig. Hij pakt uitdagingen met beide handen aan en denkt in mogelijkheden en oplossingen',
+            logo: KVKLogo,
+            website: 'https://www.kvk.nl/runnen-en-groeien/kvk-innovatielab/'
         },
         {
-            question: 'WEBUILD Consortium managers',
-            answer: 'We offer both fixed-price and hourly billing options. Fixed-price projects include detailed specifications and milestones. Hourly rates are available for ongoing development and consulting.'
+            question: 'EWC Coordinator',
+            answer: 'Vinay is a social and hard working person who has the ability to understand difficult concepts and create working solutions based on the concepts',
+            logo: EWCLogo,
+            website: 'https://eudiwalletconsortium.org/'
         },
         {
             question: 'De Haagse Hogeschool Docenten',
-            answer: 'Communicatief zijn ze heel sterk, ze kunnen complexe technologiën goed toelichten en overbrengen. Daarnaast hebben ze veel kennis en ervaring.'
+            answer: 'Communicatief is Vinay heel sterk, hij kunnen complexe technologiën goed toelichten en overbrengen. Daarnaast beschikt hij over veel kennis en ervaring.',
+            logo: HHSLogo,
+            website: 'https://www.dehaagsehogeschool.nl/'
         },
         {
             question: 'Cheqd Ceo',
-            answer: 'Yes, we offer comprehensive support packages including bug fixes, updates, monitoring, and maintenance. Support terms are included in all project contracts.'
+            answer: 'Yes, we offer comprehensive support packages including bug fixes, updates, monitoring, and maintenance. Support terms are included in all project contracts.',
+            logo: CheqdLogo,
+            website: 'https://cheqd.io/'
         }
     ];
 
@@ -339,7 +359,29 @@ const Services = () => {
                                 <div className="faq-question">
                                     <h3>{faq.question}</h3>
                                     <div className="faq-company-logo">
-                                        {/* Company logo will be added here */}
+                                        {faq.logo ? (
+                                            <a
+                                                href={faq.website}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="company-logo-link"
+                                            >
+                                                <img
+                                                    src={faq.logo}
+                                                    alt={`${faq.question} logo`}
+                                                    className="company-logo"
+                                                />
+                                            </a>
+                                        ) : (
+                                            <a
+                                                href={faq.website}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="company-logo-link company-text-link"
+                                            >
+                                                Visit Website
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                                 <div className="faq-answer">
