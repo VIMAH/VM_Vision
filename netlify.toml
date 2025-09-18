@@ -1,13 +1,13 @@
 [build]
 base = "client"
 publish = "client/build"
-command = "npm run build"
+command = "GENERATE_SOURCEMAP=false npm run build"
 
 [build.environment]
-  NODE_VERSION = "18"
-  NPM_VERSION = "9"
-  DISABLE_ESLINT_PLUGIN = "true"
-  CI = "false"
+NODE_VERSION = "18"
+NPM_VERSION = "9"
+DISABLE_ESLINT_PLUGIN = "true"
+CI = "false"
 
 [[redirects]]
 from = "/*"
