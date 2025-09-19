@@ -160,15 +160,15 @@ const Services = () => {
     const faqs = [
         {
             question: 'Business Wallet EU CEO',
-            answer: 'We support Ethereum, Polygon, BSC, Arbitrum, Optimism, and other EVM-compatible chains. We can also work with Solana, Cosmos, and other non-EVM chains based on your requirements.',
+            answer: 'Vinay is a true social developer; he knows how to navigate his network and build meaningful connections. He can take an idea, shape it into the right technical structure for the project, and implement it independently.',
             logo: BWEULogo,
             website: 'https://businesswallet.eu/'
         },
         {
-            question: 'Rijkswaterstaat WVL/CIV',
+            question: 'Rijkswaterstaat WVL',
             answer: 'Project timelines vary based on complexity. Simple smart contracts take 2-4 weeks, while full DeFi protocols can take 3-6 months. We provide detailed timelines during the planning phase.',
             logo: RWSLogo,
-            website: 'https://www.rijkswaterstaat.nl/over-ons/onze-organisatie/organisatiestructuur/centrale-informatievoorziening'
+            website: 'https://www.rijkswaterstaat.nl/over-ons/onze-organisatie/organisatiestructuur/water-verkeer-en-leefomgeving'
         },
         {
             question: 'Kamer van Koophandel Innovatielab',
@@ -177,7 +177,7 @@ const Services = () => {
             website: 'https://www.kvk.nl/runnen-en-groeien/kvk-innovatielab/'
         },
         {
-            question: 'EWC Coordinator',
+            question: 'EWC (The European Digital Identity Wallet Consortium) Coordinator',
             answer: 'Vinay is a social and hard working person who has the ability to understand difficult concepts and create working solutions based on the concepts',
             logo: EWCLogo,
             website: 'https://eudiwalletconsortium.org/'

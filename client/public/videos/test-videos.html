@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .video-test {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background: #2a2a2a;
+        }
+
+        video {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .success {
+            background: #4CAF50;
+        }
+
+        .error {
+            background: #f44336;
+        }
+
+        .warning {
+            background: #ff9800;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎬 Video Slideshow Test</h1>
+    <p>This page tests if your MP4 files are properly integrated.</p>
+
+    <div class="video-test">
+        <h3>Video 1: Software Development</h3>
+        <video controls>
+            <source src="/videos/tech-demo-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="status1" class="status">Loading...</div>
+    </div>
+
+    <div class="video-test">
+        <h3>Video 2: Web3 Solutions</h3>
+        <video controls>
+            <source src="/videos/tech-demo-2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="status2" class="status">Loading...</div>
+    </div>
+
+    <div class="video-test">
+        <h3>Video 3: Digital Identity</h3>
+        <video controls>
+            <source src="/videos/tech-demo-3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="status3" class="status">Loading...</div>
+    </div>
+
+    <div class="video-test">
+        <h3>Video 4: Cloud Architecture</h3>
+        <video controls>
+            <source src="/videos/tech-demo-4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div id="status4" class="status">Loading...</div>
+    </div>
+
+    <script>
+        // Test each video
+        const videos = document.querySelectorAll('video');
+        videos.forEach((video, index) => {
+            const statusEl = document.getElementById(`status${index + 1}`);
+
+            video.addEventListener('loadeddata', () => {
+                statusEl.textContent = '✅ Video loaded successfully!';
+                statusEl.className = 'status success';
+            });
+
+            video.addEventListener('error', (e) => {
+                statusEl.textContent = '❌ Video failed to load. Check file path and format.';
+                statusEl.className = 'status error';
+            });
+
+            video.addEventListener('loadstart', () => {
+                statusEl.textContent = '⏳ Loading video...';
+                statusEl.className = 'status warning';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useWeb3 } from '../context/Web3Context';
@@ -23,6 +23,43 @@ import './Home.css';
 
 const Home = () => {
     const { isConnected, account } = useWeb3();
+    const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+
+    // Video clips data - using working sample videos for now
+    const videoClips = [
+        {
+            src: '/videos/consultant_strategie.mp4',
+            fallbackSrc: 'videos/Error.mp4',
+            title: 'Strategie & Advies',
+            description: 'We helpen organisaties richting te geven aan hun digitale toekomst.',
+            poster: null
+        },
+        {
+            src: '/videos/computer.mp4',
+            fallbackSrc: 'videos/Error.mp4',
+            title: 'Ontwerp & Ontwikkeling',
+            description: 'We ontwerpen en realiseren schaalbare en toekomstbestendige software.',
+            poster: null
+        },
+        {
+            src: '/videos/wallet.mp4',
+            fallbackSrc: 'videos/Error.mp4',
+            title: 'Identiteit & Veiligheid',
+            description: 'We bieden expertise in digitale identiteiten en moderne wallet-oplossingen.',
+            poster: null
+        }
+    ];
+
+    // Auto-advance slideshow every 5 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentVideoIndex((prevIndex) =>
+                (prevIndex + 1) % videoClips.length
+            );
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [videoClips.length]);
 
     const features = [
         {
@@ -113,7 +150,7 @@ const Home = () => {
                             transition={{ duration: 0.8, delay: 0.6 }}
                         >
                             <Link to="/services" className="btn-primary">
-                                Mijn services
+                                Mijn Diensten
                                 <FaArrowRight />
                             </Link>
                             <Link to="/contact" className="btn-secondary">
@@ -144,20 +181,70 @@ const Home = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
                     >
-                        <div className="crypto-grid">
-                            {cryptocurrencies.map((crypto, index) => (
-                                <motion.div
-                                    key={crypto.symbol}
-                                    className="crypto-card"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
-                                    whileHover={{ scale: 1.05, y: -5 }}
+                        <div className="video-slideshow">
+                            <motion.div
+                                key={currentVideoIndex}
+                                className="video-container"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 1.1 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <video
+                                    key={videoClips[currentVideoIndex].src}
+                                    className="slideshow-video"
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    poster={videoClips[currentVideoIndex].poster}
+                                    onLoadStart={() => console.log('Video loading started:', videoClips[currentVideoIndex].src)}
+                                    onCanPlay={() => console.log('Video can play:', videoClips[currentVideoIndex].src)}
+                                    onError={(e) => {
+                                        console.log('Video failed to load:', e.target.src);
+                                        console.log('Trying fallback:', videoClips[currentVideoIndex].fallbackSrc);
+                                    }}
                                 >
-                                    <crypto.icon style={{ color: crypto.color }} />
-                                    <span>{crypto.symbol}</span>
-                                </motion.div>
-                            ))}
+                                    <source src={videoClips[currentVideoIndex].src} type="video/mp4" />
+                                    <source src={videoClips[currentVideoIndex].fallbackSrc} type="video/mp4" />
+                                    <div className="video-fallback">
+                                        <div className="fallback-content">
+                                            <h3>{videoClips[currentVideoIndex].title}</h3>
+                                            <p>{videoClips[currentVideoIndex].description}</p>
+                                            <div className="fallback-icon">🎬</div>
+                                        </div>
+                                    </div>
+                                </video>
+
+                                <div className="video-overlay">
+                                    <motion.h3
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: 0.2 }}
+                                    >
+                                        {videoClips[currentVideoIndex].title}
+                                    </motion.h3>
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: 0.4 }}
+                                    >
+                                        {videoClips[currentVideoIndex].description}
+                                    </motion.p>
+                                </div>
+                            </motion.div>
+
+                            {/* Video indicators */}
+                            <div className="video-indicators">
+                                {videoClips.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        className={`indicator ${index === currentVideoIndex ? 'active' : ''}`}
+                                        onClick={() => setCurrentVideoIndex(index)}
+                                        aria-label={`Go to video ${index + 1}`}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     </motion.div>
                 </div>
