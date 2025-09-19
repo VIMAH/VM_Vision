@@ -145,6 +145,120 @@
     font-size: 1.1rem;
 }
 
+/* Video Slideshow */
+.video-slideshow {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slideshow-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 40px 30px 30px;
+    color: white;
+}
+
+.video-overlay h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.video-overlay p {
+    font-size: 1rem;
+    color: #d1d5db;
+    margin: 0;
+}
+
+.video-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #ffffff;
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Video Fallback */
+.video-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+}
+
+.fallback-content {
+    text-align: center;
+    color: white;
+    padding: 40px;
+}
+
+.fallback-content h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.fallback-content p {
+    font-size: 1.1rem;
+    color: #e5e7eb;
+    margin-bottom: 20px;
+}
+
+.fallback-icon {
+    font-size: 3rem;
+    opacity: 0.8;
+}
+
 /* Features Section */
 .features {
     background: rgba(255, 255, 255, 0.02);
@@ -288,18 +402,21 @@
         justify-content: center;
     }
 
-    .crypto-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        max-width: 250px;
+    .video-slideshow {
+        height: 300px;
+        max-width: 100%;
     }
 
-    .crypto-card {
-        padding: 20px 15px;
+    .video-overlay {
+        padding: 30px 20px 20px;
     }
 
-    .crypto-card svg {
-        font-size: 2rem;
+    .video-overlay h3 {
+        font-size: 1.2rem;
+    }
+
+    .video-overlay p {
+        font-size: 0.9rem;
     }
 
     .feature-card {

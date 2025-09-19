@@ -118,32 +118,37 @@ const Contact = () => {
         }));
     };
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData)
-            });
+            // Create subject with name and company
+            const subject = `Contact from ${formData.name}${formData.company ? ` (${formData.company})` : ''}`;
 
-            const result = await response.json();
+            // Create email body with the message
+            const body = formData.message;
 
-            if (result.success) {
-                setSubmitStatus('success');
+            // Create mailto URL
+            const mailtoUrl = `mailto:contact@vmvision.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            // Open the default email client
+            window.location.href = mailtoUrl;
+
+            // Show success message
+            setSubmitStatus('success');
+
+            // Clear form after a short delay
+            setTimeout(() => {
                 setFormData({
                     name: '',
                     email: '',
                     company: '',
                     message: '',
                 });
-            } else {
-                setSubmitStatus('error');
-            }
+                setSubmitStatus(null);
+            }, 2000);
+
         } catch (error) {
             console.error('Contact form error:', error);
             setSubmitStatus('error');
@@ -209,7 +214,7 @@ const Contact = () => {
                                     transition={{ duration: 0.5 }}
                                 >
                                     <FaCheck />
-                                    <span>Bedankt! Je bericht is succesvol verzonden.</span>
+                                    <span>Perfect! Je email client is geopend. Bevestig het verzenden van je bericht.</span>
                                 </motion.div>
                             )}
 
@@ -221,7 +226,7 @@ const Contact = () => {
                                     transition={{ duration: 0.5 }}
                                 >
                                     <FaTimes />
-                                    <span>Sorry, er is een fout opgetreden bij het verzenden van je bericht. Probeer het opnieuw.</span>
+                                    <span>Sorry, er is een probleem opgetreden bij het openen van je email client. Probeer het opnieuw.</span>
                                 </motion.div>
                             )}
 
@@ -450,7 +455,7 @@ const Contact = () => {
                                     transition={{ duration: 0.5 }}
                                 >
                                     <FaCheck />
-                                    <span>Bedankt! Het is gelukt, u zult een bevestigingsmail ontvangen met meeting link</span>
+                                    <span>Bedankt! Je email client is geopend. Bevestig het verzenden van je bericht.</span>
                                 </motion.div>
                             )}
 
@@ -462,7 +467,7 @@ const Contact = () => {
                                     transition={{ duration: 0.5 }}
                                 >
                                     <FaTimes />
-                                    <span>Sorry, er is een fout opgetreden. Refresh the pagina en plan u meeting opnieuw in</span>
+                                    <span>Sorry, er is een probleem opgetreden bij het openen van je email client. Probeer het opnieuw.</span>
                                 </motion.div>
                             )}
 
