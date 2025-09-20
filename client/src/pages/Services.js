@@ -15,12 +15,11 @@ import {
 import './Services.css';
 
 // Import company logos
-import BWEULogo from './BWEU.png';
-import RWSLogo from './RWS_logo.jpg';
+import BWEULogo from './BWEU_LOGO.png';
+import RWSLogo from './rijkswaterstaat-logo-impuls-1822x911.jpg';
 import KVKLogo from './KVK_logo.jpg';
-import HHSLogo from './HHS_GLogo.png';
-import CheqdLogo from './cheqd_logo.jpeg';
-import EWCLogo from './EWC_Logo.webp';
+import HHSLogo from './HHS_Logo.jpg';
+import EWCLogo from './EWCLOGO.jpg';
 
 const Services = () => {
     const [activeService, setActiveService] = useState(0);
