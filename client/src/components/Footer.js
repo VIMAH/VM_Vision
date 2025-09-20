@@ -18,7 +18,7 @@ const Footer = () => {
         { path: '/about', label: 'Over ons' },
         { path: '/services', label: 'Diensten' },
         { path: '/projects', label: 'Projecten' },
-        { path: '/contact', label: 'contact' },
+        { path: '/contact', label: 'Contact' },
     ];
 
     const services = [
