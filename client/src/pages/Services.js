@@ -18,7 +18,7 @@ import './Services.css';
 import BWEULogo from './BWEU.png';
 import RWSLogo from './RWS_logo.jpg';
 import KVKLogo from './KVK_logo.jpg';
-import HHSLogo from './HHS_logo.png';
+import HHSLogo from './HHS_GLogo.png';
 import CheqdLogo from './cheqd_logo.jpeg';
 import EWCLogo from './EWC_Logo.webp';
 
@@ -97,7 +97,7 @@ const Services = () => {
             title: 'Identiteit & Veiligheid',
             id: 'identiteit-veiligheid',
             description:
-                'Veiligheid en vertrouwen zijn cruciaal in de digitale wereld. Wij bieden expertise in IAM, digitale identiteiten en moderne wallet-oplossingen.',
+                'Veiligheid en vertrouwen zijn cruciaal in de digitale wereld. Wij bieden expertise in digitale identiteiten en moderne wallet-oplossingen.',
             features: [
                 'IAM systemen',
                 'Digitale identiteiten',
@@ -160,13 +160,13 @@ const Services = () => {
     const faqs = [
         {
             question: 'Business Wallet EU CEO',
-            answer: 'Vinay is a true social developer; he knows how to navigate his network and build meaningful connections. He can take an idea, shape it into the right technical structure for the project, and implement it independently.',
+            answer: 'Vinay is a true social developer. He knows how to navigate his network and build meaningful connections. He can take an idea, shape it into the right technical structure for the project, and implement it independently.',
             logo: BWEULogo,
             website: 'https://businesswallet.eu/'
         },
         {
             question: 'Rijkswaterstaat WVL',
-            answer: 'Project timelines vary based on complexity. Simple smart contracts take 2-4 weeks, while full DeFi protocols can take 3-6 months. We provide detailed timelines during the planning phase.',
+            answer: 'Vinay is een betrokken, vriendelijke collega die iedereen graag bij staat met jouw deskundige inzet en advies. Mede dankzij jou als het dashboard Veiligheid van Rijkswaterstaat doorontwikkeld naar een professioneel en gewaardeerd dashboard voor het bestuur.',
             logo: RWSLogo,
             website: 'https://www.rijkswaterstaat.nl/over-ons/onze-organisatie/organisatiestructuur/water-verkeer-en-leefomgeving'
         },
@@ -184,16 +184,16 @@ const Services = () => {
         },
         {
             question: 'De Haagse Hogeschool Docenten',
-            answer: 'Communicatief is Vinay heel sterk, hij kunnen complexe technologiën goed toelichten en overbrengen. Daarnaast beschikt hij over veel kennis en ervaring.',
+            answer: 'Communicatief is Vinay heel sterk, hij kan complexe technologiën goed toelichten en overbrengen. Daarnaast beschikt hij over veel kennis en ervaring.',
             logo: HHSLogo,
             website: 'https://www.dehaagsehogeschool.nl/'
-        },
-        {
-            question: 'Cheqd Ceo',
-            answer: 'Yes, we offer comprehensive support packages including bug fixes, updates, monitoring, and maintenance. Support terms are included in all project contracts.',
-            logo: CheqdLogo,
-            website: 'https://cheqd.io/'
         }
+        // {
+        //     question: 'Cheqd Ceo',
+        //     answer: 'Yes, we offer comprehensive support packages including bug fixes, updates, monitoring, and maintenance. Support terms are included in all project contracts.',
+        //     logo: CheqdLogo,
+        //     website: 'https://cheqd.io/'
+        // }
     ];
 
     return (

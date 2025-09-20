@@ -17,7 +17,8 @@ import {
     FaLaptopCode,
     FaUserTie,
     FaIdCard,
-    FaKey
+    FaKey,
+    FaGraduationCap
 } from 'react-icons/fa';
 import './Home.css';
 
@@ -93,9 +94,9 @@ const Home = () => {
             color: '#8b5cf6'
         },
         {
-            icon: FaKey,
-            title: 'IAM Systemen',
-            description: 'Grip op wie toegang heeft. Wij helpen organisaties met veilige IAM-oplossingen voor een betrouwbare digitale omgeving.',
+            icon: FaGraduationCap,
+            title: 'IT Kennisoverdracht & Training',
+            description: 'Kennis delen en groeien. Wij verzorgen praktische lessen, workshops en trainingen om teams te versterken met actuele IT-expertise.',
             color: '#06b6d4'
         }
     ];
