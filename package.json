@@ -1,7 +1,7 @@
 {
-    "name": "vm-vision-web3",
+    "name": "vm-vision",
     "version": "1.0.0",
-    "description": "VM Vision Web3 Company Website",
+    "description": "VM Vision",
     "main": "index.js",
     "scripts": {
         "dev": "concurrently \"npm run server\" \"npm run client\"",
