@@ -20,6 +20,7 @@ import RWSLogo from './rijkswaterstaat-logo-impuls-1822x911.jpg';
 import KVKLogo from './KVK_logo.jpg';
 import HHSLogo from './HHS_Logo.jpg';
 import EWCLogo from './EWCLOGO.jpg';
+import TopographLogo from './Topograph_Logo.jpg';
 
 const Services = () => {
     const [activeService, setActiveService] = useState(0);
@@ -186,6 +187,12 @@ const Services = () => {
             answer: 'Communicatief is Vinay heel sterk, hij kan complexe technologiën goed toelichten en overbrengen. Daarnaast beschikt hij over veel kennis en ervaring.',
             logo: HHSLogo,
             website: 'https://www.dehaagsehogeschool.nl/'
+        },
+        {
+            question: 'Topograph',
+            answer: 'Vinay gave me valuable insights into the opportunity around the European Business Wallet. His deep understanding of the European Commission’s work and the KVK’s position was particularly helpful, and it’s clear that he has strong expertise in this area.',
+            logo: TopographLogo,
+            website: 'https://www.topograph.co/'
         }
         // {
         //     question: 'Cheqd Ceo',
