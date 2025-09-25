@@ -189,7 +189,7 @@ const Services = () => {
             website: 'https://www.dehaagsehogeschool.nl/'
         },
         {
-            question: 'Topograph',
+            question: 'Topograph CEO',
             answer: 'Vinay gave me valuable insights into the opportunity around the European Business Wallet. His deep understanding of the European Commission’s work and the KVK’s position was particularly helpful, and it’s clear that he has strong expertise in this area.',
             logo: TopographLogo,
             website: 'https://www.topograph.co/'
