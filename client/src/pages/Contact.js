@@ -87,8 +87,8 @@ const Contact = () => {
         {
             icon: FaEnvelope,
             title: 'Email',
-            value: 'contact@vmvision.com',
-            link: 'mailto:contact@vmvision.com'
+            value: 'contact@vmvision.nl',
+            link: 'mailto:contact@vmvision.nl'
         },
         {
             icon: FaPhone,
@@ -130,7 +130,7 @@ const Contact = () => {
             const body = formData.message;
 
             // Create mailto URL
-            const mailtoUrl = `mailto:contact@vmvision.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            const mailtoUrl = `mailto:contact@vmvision.nl?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
             // Open the default email client
             window.location.href = mailtoUrl;

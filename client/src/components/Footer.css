@@ -144,6 +144,18 @@
     letter-spacing: 0.5px;
 }
 
+.iban-value {
+    font-size: 0.9rem;
+}
+
+.iban-orange {
+    color: #FF6200;
+    font-weight: 700;
+    font-size: 0.9rem;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+}
+
 .footer-bottom {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding: 30px 0;

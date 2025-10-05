@@ -88,7 +88,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📞 Support
 
-- **Email**: contact@vmvision.com | Vinaymahadew.01@gmail.com
+- **Email**: contact@vmvision.nl | Vinaymahadew.01@gmail.com
 - **Website**: https://vmvision.com
 - **Discord**: [Join our community](https://discord.gg/vmvision)
 

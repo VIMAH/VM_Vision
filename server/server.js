@@ -21,7 +21,7 @@ const swaggerOptions = {
             description: 'API for VM Vision Web3 platform - Blockchain data, NFT portfolio, DeFi analytics, and more',
             contact: {
                 name: 'VM Vision Team',
-                email: 'contact@vmvision.com'
+                email: 'contact@vmvision.nl'
             }
         },
         servers: [
