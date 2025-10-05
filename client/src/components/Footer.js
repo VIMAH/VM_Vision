@@ -106,7 +106,7 @@ const Footer = () => {
                         <h4>Contact Info</h4>
                         <div className="contact-info">
                             <p>
-                                <strong>Email:</strong> contact@vmvision.com
+                                <strong>Email:</strong> contact@vmvision.nl
                             </p>
                         </div>
 
@@ -121,7 +121,9 @@ const Footer = () => {
                             </div>
                             <div className="company-info-item">
                                 <span className="company-info-label">IBAN:</span>
-                                <span className="company-info-value">NL20 INGB 0001234567</span>
+                                <span className="company-info-value iban-value">
+                                    <span className="iban-orange">NL54</span> <span className="iban-orange">INGB</span> 0112 7604 81
+                                </span>
                             </div>
                         </div>
                     </motion.div>
