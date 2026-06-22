@@ -15,12 +15,6 @@ import {
 import './Services.css';
 
 // Import company logos
-import BWEULogo from './BWEU_LOGO.png';
-import RWSLogo from './rijkswaterstaat-logo-impuls-1822x911.jpg';
-import KVKLogo from './KVK_logo.jpg';
-import HHSLogo from './HHS_Logo.jpg';
-import EWCLogo from './EWCLOGO.jpg';
-import TopographLogo from './Topograph_Logo.jpg';
 
 const Services = () => {
     const [activeService, setActiveService] = useState(0);
@@ -157,50 +151,50 @@ const Services = () => {
     ];
 
 
-    const faqs = [
-        {
-            question: 'Business Wallet EU CEO',
-            answer: 'Vinay is a true social developer. He knows how to navigate his network and build meaningful connections. He can take an idea, shape it into the right technical structure for the project, and implement it independently.',
-            logo: BWEULogo,
-            website: 'https://businesswallet.eu/'
-        },
-        {
-            question: 'Rijkswaterstaat WVL',
-            answer: 'Vinay is een betrokken, vriendelijke collega die iedereen graag bij staat met jouw deskundige inzet en advies. Mede dankzij jou als het dashboard Veiligheid van Rijkswaterstaat doorontwikkeld naar een professioneel en gewaardeerd dashboard voor het bestuur.',
-            logo: RWSLogo,
-            website: 'https://www.rijkswaterstaat.nl/over-ons/onze-organisatie/organisatiestructuur/water-verkeer-en-leefomgeving'
-        },
-        {
-            question: 'Kamer van Koophandel Innovatielab',
-            answer: 'Vinay is assertief, enthousiast en leergierig. Hij pakt uitdagingen met beide handen aan en denkt in mogelijkheden en oplossingen',
-            logo: KVKLogo,
-            website: 'https://www.kvk.nl/runnen-en-groeien/kvk-innovatielab/'
-        },
-        {
-            question: 'EWC (The European Digital Identity Wallet Consortium) Coordinator',
-            answer: 'Vinay is a social and hard working person who has the ability to understand difficult concepts and create working solutions based on the concepts',
-            logo: EWCLogo,
-            website: 'https://eudiwalletconsortium.org/'
-        },
-        {
-            question: 'De Haagse Hogeschool Docenten',
-            answer: 'Communicatief is Vinay heel sterk, hij kan complexe technologiën goed toelichten en overbrengen. Daarnaast beschikt hij over veel kennis en ervaring.',
-            logo: HHSLogo,
-            website: 'https://www.dehaagsehogeschool.nl/'
-        },
-        {
-            question: 'Topograph CEO',
-            answer: 'Vinay gave me valuable insights into the opportunity around the European Business Wallet. His deep understanding of the European Commission’s work and the KVK’s position was particularly helpful, and it’s clear that he has strong expertise in this area.',
-            logo: TopographLogo,
-            website: 'https://www.topograph.co/'
-        }
-        // {
-        //     question: 'Cheqd Ceo',
-        //     answer: 'Yes, we offer comprehensive support packages including bug fixes, updates, monitoring, and maintenance. Support terms are included in all project contracts.',
-        //     logo: CheqdLogo,
-        //     website: 'https://cheqd.io/'
-        // }
-    ];
+    // const faqs = [
+    //     {
+    //         question: 'Business Wallet EU CEO',
+    //         answer: 'Vinay is a true social developer. He knows how to navigate his network and build meaningful connections. He can take an idea, shape it into the right technical structure for the project, and implement it independently.',
+    //         logo: BWEULogo,
+    //         website: 'https://businesswallet.eu/'
+    //     },
+    //     {
+    //         question: 'Rijkswaterstaat WVL',
+    //         answer: 'Vinay is een betrokken, vriendelijke collega die iedereen graag bij staat met jouw deskundige inzet en advies. Mede dankzij jou als het dashboard Veiligheid van Rijkswaterstaat doorontwikkeld naar een professioneel en gewaardeerd dashboard voor het bestuur.',
+    //         logo: RWSLogo,
+    //         website: 'https://www.rijkswaterstaat.nl/over-ons/onze-organisatie/organisatiestructuur/water-verkeer-en-leefomgeving'
+    //     },
+    //     {
+    //         question: 'Kamer van Koophandel Innovatielab',
+    //         answer: 'Vinay is assertief, enthousiast en leergierig. Hij pakt uitdagingen met beide handen aan en denkt in mogelijkheden en oplossingen',
+    //         logo: KVKLogo,
+    //         website: 'https://www.kvk.nl/runnen-en-groeien/kvk-innovatielab/'
+    //     },
+    //     {
+    //         question: 'EWC (The European Digital Identity Wallet Consortium) Coordinator',
+    //         answer: 'Vinay is a social and hard working person who has the ability to understand difficult concepts and create working solutions based on the concepts',
+    //         logo: EWCLogo,
+    //         website: 'https://eudiwalletconsortium.org/'
+    //     },
+    //     {
+    //         question: 'De Haagse Hogeschool Docenten',
+    //         answer: 'Communicatief is Vinay heel sterk, hij kan complexe technologiën goed toelichten en overbrengen. Daarnaast beschikt hij over veel kennis en ervaring.',
+    //         logo: HHSLogo,
+    //         website: 'https://www.dehaagsehogeschool.nl/'
+    //     },
+    //     {
+    //         question: 'Topograph',
+    //         answer: 'Vinay gave me valuable insights into the opportunity around the European Business Wallet. His deep understanding of the European Commission’s work and the KVK’s position was particularly helpful, and it’s clear that he has strong expertise in this area.',
+    //         logo: TopographLogo,
+    //         website: 'https://www.topograph.co/'
+    //     },
+    //     {
+    //         question: 'Cheqd Ceo',
+    //         answer: 'Yes, we offer comprehensive support packages including bug fixes, updates, monitoring, and maintenance. Support terms are included in all project contracts.',
+    //         logo: CheqdLogo,
+    //         website: 'https://cheqd.io/'
+    //     }
+    // ];
 
     return (
         <div className="services">
@@ -333,7 +327,7 @@ const Services = () => {
                 </div>
             </section>
 
-            {/* FAQ Section */}
+            {/* FAQ Section
             <section className="faq section">
                 <div className="container">
                     <motion.h2
@@ -391,7 +385,7 @@ const Services = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* CTA Section */}
             <section className="services-cta section">
