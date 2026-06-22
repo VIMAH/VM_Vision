@@ -3,6 +3,13 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useWeb3 } from '../context/Web3Context';
 import Web3Dashboard from '../components/Web3Dashboard';
+import BWEULogo from './BWEU__.png';
+import KVKLogo from './KVK__.png';
+import ECPLogo from './ECP.png';
+import TopographLogo from './Topograph__.png';
+import CPLogo from './CP.png';
+import RWSLogo from './rijkswaterstaat-logo-impuls-1822x911.jpg';
+import EWCLogo from './EWC__.png';
 import {
     FaChartLine,
     FaEthereum,
@@ -26,28 +33,49 @@ const Home = () => {
     const { isConnected, account } = useWeb3();
     const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
 
-    // Video clips data - using working sample videos for now
+    // Customer logo slideshow data from Services faqs
     const videoClips = [
         {
-            src: '/videos/consultant_strategie.mp4',
-            fallbackSrc: 'videos/Error.mp4',
-            title: 'Strategie & Advies',
-            description: 'We helpen organisaties richting te geven aan hun digitale toekomst.',
-            poster: null
+            src: BWEULogo,
+            title: 'Business Wallet EU CEO',
+            description: 'Vinay is a true social developer. He knows how to navigate his network and build meaningful connections. He can take an idea, shape it into the right technical structure for the project, and implement it independently.',
+            website: 'https://businesswallet.eu/'
         },
         {
-            src: '/videos/computer.mp4',
-            fallbackSrc: 'videos/Error.mp4',
-            title: 'Ontwerp & Ontwikkeling',
-            description: 'We ontwerpen en realiseren schaalbare en toekomstbestendige software.',
-            poster: null
+            src: KVKLogo,
+            title: 'Kamer van Koophandel Innovatielab',
+            description: 'Vinay is assertief, enthousiast en leergierig. Hij pakt uitdagingen met beide handen aan en denkt in mogelijkheden en oplossingen',
+            website: 'https://www.kvk.nl/'
         },
         {
-            src: '/videos/wallet.mp4',
-            fallbackSrc: 'videos/Error.mp4',
-            title: 'Identiteit & Veiligheid',
-            description: 'We bieden expertise in digitale identiteiten en moderne wallet-oplossingen.',
-            poster: null
+            src: ECPLogo,
+            title: 'ECP',
+            description: 'Customer reference from services section',
+            website: 'https://ecp.nl/'
+        },
+        {
+            src: TopographLogo,
+            title: 'Topograph',
+            description: 'Vinay gave me valuable insights into the opportunity around the European Business Wallet. His deep understanding of the European Commission’s work and the KVK’s position was particularly helpful, and it’s clear that he has strong expertise in this area.',
+            website: 'https://www.topograph.co/'
+        },
+        {
+            src: CPLogo,
+            title: 'Cheqd Ceo',
+            description: 'Yes, we offer comprehensive support packages including bug fixes, updates, monitoring, and maintenance. Support terms are included in all project contracts.',
+            website: 'https://www.companypassport.com/'
+        },
+        {
+            src: RWSLogo,
+            title: 'Rijkswaterstaat WVL',
+            description: 'Vinay is een betrokken, vriendelijke collega die iedereen graag bij staat met jouw deskundige inzet en advies. Mede dankzij jou als het dashboard Veiligheid van Rijkswaterstaat doorontwikkeld naar een professioneel en gewaardeerd dashboard voor het bestuur.',
+            website: 'https://www.rijkswaterstaat.nl/'
+        },
+        {
+            src: EWCLogo,
+            title: 'EWC (The European Digital Identity Wallet Consortium) Coordinator',
+            description: 'Vinay is a social and hard working person who has the ability to understand difficult concepts and create working solutions based on the concepts',
+            website: 'https://ec.europa.eu/digital-building-blocks/sites/spaces/EUDIGITALIDENTITYWALLET/pages/694487738/EU+Digital+Identity+Wallet+Home'
         }
     ];
 
@@ -132,8 +160,7 @@ const Home = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            Welcome to the Future of
-                            <span className="text-gradient"> Software Development</span>
+                            Vertrouwd door <span className="text-gradient">klanten</span>
                         </motion.h1>
 
                         <motion.p
@@ -142,7 +169,7 @@ const Home = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8, delay: 0.4 }}
                         >
-                            VM Vision is de betrouwbare partner in het ontwerpen, ontwikkelen en adviseren van moderne softwareoplossingen.                         </motion.p>
+                            VM Vision is de betrouwbare partner in het ontwerpen, ontwikkelen en adviseren van moderne softwareoplossingen.                        </motion.p>
 
                         <motion.div
                             className="hero-actions"
@@ -191,32 +218,23 @@ const Home = () => {
                                 exit={{ opacity: 0, scale: 1.1 }}
                                 transition={{ duration: 0.5 }}
                             >
-                                <video
-                                    key={videoClips[currentVideoIndex].src}
-                                    className="slideshow-video"
-                                    autoPlay
-                                    muted
-                                    loop
-                                    playsInline
-                                    poster={videoClips[currentVideoIndex].poster}
-                                    onLoadStart={() => console.log('Video loading started:', videoClips[currentVideoIndex].src)}
-                                    onCanPlay={() => console.log('Video can play:', videoClips[currentVideoIndex].src)}
-                                    onError={(e) => {
-                                        console.log('Video failed to load:', e.target.src);
-                                        console.log('Trying fallback:', videoClips[currentVideoIndex].fallbackSrc);
-                                    }}
+                                <a
+                                    href={videoClips[currentVideoIndex].website}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="slideshow-link"
+                                    aria-label={`Open website van ${videoClips[currentVideoIndex].title}`}
                                 >
-                                    <source src={videoClips[currentVideoIndex].src} type="video/mp4" />
-                                    <source src={videoClips[currentVideoIndex].fallbackSrc} type="video/mp4" />
-                                    <div className="video-fallback">
-                                        <div className="fallback-content">
-                                            <h3>{videoClips[currentVideoIndex].title}</h3>
-                                            <p>{videoClips[currentVideoIndex].description}</p>
-                                            <div className="fallback-icon">🎬</div>
-                                        </div>
-                                    </div>
-                                </video>
+                                    <img
+                                        key={videoClips[currentVideoIndex].src}
+                                        className="slideshow-video"
+                                        src={videoClips[currentVideoIndex].src}
+                                        alt={videoClips[currentVideoIndex].title}
+                                        loading="lazy"
+                                    />
+                                </a>
 
+                                {/* Slideshow text hidden on frontend, kept as comment for future reuse.
                                 <div className="video-overlay">
                                     <motion.h3
                                         initial={{ opacity: 0, y: 20 }}
@@ -233,6 +251,7 @@ const Home = () => {
                                         {videoClips[currentVideoIndex].description}
                                     </motion.p>
                                 </div>
+                                */}
                             </motion.div>
 
                             {/* Video indicators */}
