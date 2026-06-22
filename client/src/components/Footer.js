@@ -113,11 +113,11 @@ const Footer = () => {
                         <div className="company-info-card">
                             <div className="company-info-item">
                                 <span className="company-info-label">KvK Nr:</span>
-                                <span className="company-info-value">9810208</span>
+                                <span className="company-info-value">98310208</span>
                             </div>
                             <div className="company-info-item">
                                 <span className="company-info-label">BTW Nr:</span>
-                                <span className="company-info-value">NL 123456789 B 01</span>
+                                <span className="company-info-value">NL 005323517 B 18</span>
                             </div>
                             <div className="company-info-item">
                                 <span className="company-info-label">IBAN:</span>
